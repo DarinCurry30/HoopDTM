@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hoop DTM — Team</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">🏀 Hoop DTM</a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+       <div class="search-container">
+    <input 
+        type="text" 
+        id="player-search" 
+        placeholder="Search players/teams..."
+        autocomplete="off"
+    >
+
+    <div id="search-results"></div>
+</div>
+        </div>
+    </nav>
+
+
+    <main>
+
+        <section class="team-profile">
+
+            <div class="team-header">
+
+                <div class="big-team-icon" id="teamAbbreviation">
+                    --
+                </div>
+
+                <div>
+                    <p class="team-label">TEAM</p>
+
+                    <h1 id="teamName">Team</h1>
+
+                    <p class="team-conference" id="teamConference">
+                        Conference · Division
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="team-record">
+
+                <div class="record-box">
+                    <span>25-26 WINS</span>
+                    <strong id="wins">0</strong>
+                </div>
+
+                <div class="record-box">
+                    <span>25-26 LOSSES</span>
+                    <strong id="losses">0</strong>
+                </div>
+
+                <div class="record-box">
+                    <span>25-26 WIN %</span>
+                    <strong id="winPercent">0%</strong>
+                </div>
+
+            </div>
+
+
+    <section class="profile-section">
+    <h2>Team Stats</h2>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Season</th>
+                    <th>W</th>
+                    <th>L</th>
+                    <th>Win%</th>
+                    <th>GB</th>
+                    <th>PPG</th>
+                    <th>RPG</th>
+                    <th>APG</th>
+                    <th>SPG</th>
+                    <th>BPG</th>
+                    <th>FG%</th>
+                    <th>3P%</th>
+                </tr>
+            </thead>
+
+            <tbody id="teamStatsBody">
+                <!-- Team season stats will be added by JavaScript -->
+            </tbody>
+        </table>
+    </div>
+</section>
+
+
+            <section class="profile-section">
+
+                <h2>Roster</h2>
+
+                <div class="roster-grid" id="roster">
+
+                    <!-- Players will be added by JavaScript -->
+
+                </div>
+                
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+<script src="teams.js"></script>
+<script src="script.js"></script>
+</body>
+</html>

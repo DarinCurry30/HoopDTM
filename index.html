@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hoop DTM</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">🏀 Hoop DTM</a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+
+            <div class="search-container">
+    <input 
+        type="text" 
+        id="player-search" 
+        placeholder="Search players/teams..."
+        autocomplete="off"
+    >
+
+    <div id="search-results"></div>
+</div>
+        </div>
+    </nav>
+
+
+    <main>
+
+        <section class="hero">
+
+            <h1>
+                Basketball.<br>
+                <span>By the Numbers.</span>
+            </h1>
+
+            <p>
+                Explore basketball players, teams, and statistics.
+            </p>
+
+            <div class="search">
+    <div class="hero-search-container">
+        <input
+            type="text"
+            id="playerSearch"
+            placeholder="Search for a player..."
+            autocomplete="off"
+        >
+
+        <button onclick="searchPlayer()">Search</button>
+
+        <div id="playerSearchResults"></div>
+    </div>
+</div>
+
+        </section>
+
+
+   <section class="leaders" id="leaders">
+    <h2 onclick="window.location.href='leaders.html'">League Leaders</h2>
+
+    <div class="stat-cards">
+
+    <div class="stat-card" onclick="window.location.href='leader-ppg.html'">
+        <div class="stat-title">2025-26 PPG</div>
+        <div class="stat-number" id="leaderPPG">—</div>
+        <div class="stat-player" id="leaderPPGPlayer">Player Name</div>
+    </div>
+
+    <div class="stat-card" onclick="window.location.href='leader-rpg.html'">
+        <div class="stat-title">2025-26 RPG</div>
+        <div class="stat-number" id="leaderRPG">—</div>
+        <div class="stat-player" id="leaderRPGPlayer">Player Name</div>
+    </div>
+
+    <div class="stat-card" onclick="window.location.href='leader-apg.html'">
+        <div class="stat-title">2025-26 APG</div>
+        <div class="stat-number" id="leaderAPG">—</div>
+        <div class="stat-player" id="leaderAPGPlayer">Player Name</div>
+    </div>
+
+</div>
+</section>
+
+        <section class="players" id="players">
+
+            
+            <h2 onclick="window.location.href='stats.html'">Player Stats 2025-26</h2>
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">PLAYER ↕</th>
+<th onclick="sortTable(1)">PPG ↕</th>
+<th onclick="sortTable(2)">RPG ↕</th>
+<th onclick="sortTable(3)">APG ↕</th>
+<th onclick="sortTable(4)">FG% ↕</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="playerTable">
+
+                        <tr class="player-name" onclick="window.location.href='player.html?player=lebron-james'"">
+                            <td>LeBron James</td>
+                            <td>25.0</td>
+                            <td>7.5</td>
+                            <td>8.0</td>
+                            <td>52.0%</td>
+                        </tr>
+
+                        <tr class="player-name" onclick="window.location.href='player.html?player=stephen-curry'">
+                            <td>Stephen Curry</td>
+                            <td>27.0</td>
+                            <td>4.5</td>
+                            <td>6.2</td>
+                            <td>47.5%</td>
+                        </tr>
+
+                        <tr class="player-name" onclick="window.location.href='player.html?player=nikola-jokic'">
+                            <td>Nikola Jokic</td>
+                            <td>29.6</td>
+                            <td>12.7</td>
+                            <td>10.2</td>
+                            <td>58.3%</td>
+                        </tr>
+
+                        <tr class="player-name" onclick="window.location.href='player.html?player=shai-gilgeous-alexander'">
+                            <td>Shai Gilgeous-Alexander</td>
+                            <td>32.0</td>
+                            <td>5.5</td>
+                            <td>6.4</td>
+                            <td>53.1%</td>
+                        </tr>
+                        <tr class="player-name" onclick="window.location.href=' player.html? player=giannis-antetokounmpo'">
+                            <td>Giannis Antetokounmpo</td>
+                            <td>30.4</td>
+                            <td>11.9</td>
+                            <td>6.1</td>
+                            <td>61.2%</td>
+                        </tr>
+
+                    
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="teams.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

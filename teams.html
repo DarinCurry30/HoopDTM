@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Teams — Hoop DTM</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">🏀 Hoop DTM</a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="player-search"
+                    placeholder="Search players/teams..."
+                    autocomplete="off"
+                >
+                <div id="search-results"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+        <section class="teams-page">
+
+            <div class="teams-page-header">
+                <div>
+                    <h1 id="teamsPageTitle">NBA Teams</h1>
+
+                    <p class="page-subtitle" id="teamsPageSubtitle">
+                        Explore every NBA team.
+                    </p>
+                </div>
+
+                <select id="teamViewSelect" onchange="changeTeamView()">
+                    <option value="directory">Directory</option>
+                    <option value="stats">Stats</option>
+                </select>
+            </div>
+
+
+            <!-- DIRECTORY VIEW -->
+
+            <div id="teamDirectoryView">
+
+                <div class="team-search">
+
+                    <input
+                        type="text"
+                        id="teamSearch"
+                        placeholder="Search teams..."
+                        onkeyup="filterTeams()"
+                    >
+
+                </div>
+
+
+                <div class="teams-grid" id="teamsList">
+
+                    <a href="team.html?team=boston-celtics" class="team-card">
+                        <div class="team-icon">BOS</div>
+                        <div class="team-info">
+                            <strong>Boston Celtics</strong>
+                            <span>Eastern Conference · Atlantic</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=golden-state-warriors" class="team-card">
+                        <div class="team-icon">GSW</div>
+                        <div class="team-info">
+                            <strong>Golden State Warriors</strong>
+                            <span>Western Conference · Pacific</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=phoenix-suns" class="team-card">
+                        <div class="team-icon">PHX</div>
+                        <div class="team-info">
+                            <strong>Phoenix Suns</strong>
+                            <span>Western Conference · Pacific</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=brooklyn-nets" class="team-card">
+                        <div class="team-icon">BKN</div>
+                        <div class="team-info">
+                            <strong>Brooklyn Nets</strong>
+                            <span>Eastern Conference · Atlantic</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=new-york-knicks" class="team-card">
+                        <div class="team-icon">NYK</div>
+                        <div class="team-info">
+                            <strong>New York Knicks</strong>
+                            <span>Eastern Conference · Atlantic</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=philadelphia-76ers" class="team-card">
+                        <div class="team-icon">PHI</div>
+                        <div class="team-info">
+                            <strong>Philadelphia 76ers</strong>
+                            <span>Eastern Conference · Atlantic</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=toronto-raptors" class="team-card">
+                        <div class="team-icon">TOR</div>
+                        <div class="team-info">
+                            <strong>Toronto Raptors</strong>
+                            <span>Eastern Conference · Atlantic</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=chicago-bulls" class="team-card">
+                        <div class="team-icon">CHI</div>
+                        <div class="team-info">
+                            <strong>Chicago Bulls</strong>
+                            <span>Eastern Conference · Central</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=cleveland-cavaliers" class="team-card">
+                        <div class="team-icon">CLE</div>
+                        <div class="team-info">
+                            <strong>Cleveland Cavaliers</strong>
+                            <span>Eastern Conference · Central</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=detroit-pistons" class="team-card">
+                        <div class="team-icon">DET</div>
+                        <div class="team-info">
+                            <strong>Detroit Pistons</strong>
+                            <span>Eastern Conference · Central</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=indiana-pacers" class="team-card">
+                        <div class="team-icon">IND</div>
+                        <div class="team-info">
+                            <strong>Indiana Pacers</strong>
+                            <span>Eastern Conference · Central</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=milwaukee-bucks" class="team-card">
+                        <div class="team-icon">MIL</div>
+                        <div class="team-info">
+                            <strong>Milwaukee Bucks</strong>
+                            <span>Eastern Conference · Central</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=atlanta-hawks" class="team-card">
+                        <div class="team-icon">ATL</div>
+                        <div class="team-info">
+                            <strong>Atlanta Hawks</strong>
+                            <span>Eastern Conference · Southeast</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=charlotte-hornets" class="team-card">
+                        <div class="team-icon">CHA</div>
+                        <div class="team-info">
+                            <strong>Charlotte Hornets</strong>
+                            <span>Eastern Conference · Southeast</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=miami-heat" class="team-card">
+                        <div class="team-icon">MIA</div>
+                        <div class="team-info">
+                            <strong>Miami Heat</strong>
+                            <span>Eastern Conference · Southeast</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=orlando-magic" class="team-card">
+                        <div class="team-icon">ORL</div>
+                        <div class="team-info">
+                            <strong>Orlando Magic</strong>
+                            <span>Eastern Conference · Southeast</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=washington-wizards" class="team-card">
+                        <div class="team-icon">WAS</div>
+                        <div class="team-info">
+                            <strong>Washington Wizards</strong>
+                            <span>Eastern Conference · Southeast</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=denver-nuggets" class="team-card">
+                        <div class="team-icon">DEN</div>
+                        <div class="team-info">
+                            <strong>Denver Nuggets</strong>
+                            <span>Western Conference · Northwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=minnesota-timberwolves" class="team-card">
+                        <div class="team-icon">MIN</div>
+                        <div class="team-info">
+                            <strong>Minnesota Timberwolves</strong>
+                            <span>Western Conference · Northwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=oklahoma-city-thunder" class="team-card">
+                        <div class="team-icon">OKC</div>
+                        <div class="team-info">
+                            <strong>Oklahoma City Thunder</strong>
+                            <span>Western Conference · Northwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=portland-trail-blazers" class="team-card">
+                        <div class="team-icon">POR</div>
+                        <div class="team-info">
+                            <strong>Portland Trail Blazers</strong>
+                            <span>Western Conference · Northwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=utah-jazz" class="team-card">
+                        <div class="team-icon">UTA</div>
+                        <div class="team-info">
+                            <strong>Utah Jazz</strong>
+                            <span>Western Conference · Northwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=los-angeles-clippers" class="team-card">
+                        <div class="team-icon">LAC</div>
+                        <div class="team-info">
+                            <strong>LA Clippers</strong>
+                            <span>Western Conference · Pacific</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=los-angeles-lakers" class="team-card">
+                        <div class="team-icon">LAL</div>
+                        <div class="team-info">
+                            <strong>Los Angeles Lakers</strong>
+                            <span>Western Conference · Pacific</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=sacramento-kings" class="team-card">
+                        <div class="team-icon">SAC</div>
+                        <div class="team-info">
+                            <strong>Sacramento Kings</strong>
+                            <span>Western Conference · Pacific</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=dallas-mavericks" class="team-card">
+                        <div class="team-icon">DAL</div>
+                        <div class="team-info">
+                            <strong>Dallas Mavericks</strong>
+                            <span>Western Conference · Southwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=houston-rockets" class="team-card">
+                        <div class="team-icon">HOU</div>
+                        <div class="team-info">
+                            <strong>Houston Rockets</strong>
+                            <span>Western Conference · Southwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=memphis-grizzlies" class="team-card">
+                        <div class="team-icon">MEM</div>
+                        <div class="team-info">
+                            <strong>Memphis Grizzlies</strong>
+                            <span>Western Conference · Southwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=new-orleans-pelicans" class="team-card">
+                        <div class="team-icon">NOP</div>
+                        <div class="team-info">
+                            <strong>New Orleans Pelicans</strong>
+                            <span>Western Conference · Southwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                    <a href="team.html?team=san-antonio-spurs" class="team-card">
+                        <div class="team-icon">SAS</div>
+                        <div class="team-info">
+                            <strong>San Antonio Spurs</strong>
+                            <span>Western Conference · Southwest</span>
+                        </div>
+                        <div class="team-arrow">→</div>
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATS VIEW -->
+
+            <div id="teamStatsView" style="display: none;">
+
+                <div class="team-stats-controls">
+
+                    <input
+                        type="text"
+                        id="teamStatsSearch"
+                        placeholder="Search teams..."
+                        onkeyup="filterTeamStats()"
+                    >
+
+                    <select id="teamSeasonSelect" onchange="loadTeamStats()">
+                        <option value="2526">2025-26</option>
+                        <option value="2425">2024-25</option>
+                    </select>
+
+                    <select id="teamStatFilter" onchange="sortTeamStats()">
+                        <option value="name">Name</option>
+                        <option value="teamPPG">Points Per Game</option>
+                        <option value="teamRPG">Rebounds Per Game</option>
+                        <option value="teamAPG">Assists Per Game</option>
+                        <option value="teamSPG">Steals Per Game</option>
+                        <option value="teamBPG">Blocks Per Game</option>
+                        <option value="teamFG">Field Goal %</option>
+                        <option value="teamThree">3PT %</option>
+                    </select>
+
+                </div>
+
+                <div class="team-stats-table-container">
+
+                    <table class="team-stats-table">
+
+                        <thead>
+                            <tr>
+                                <th>Team</th>
+                                <th>PPG</th>
+                                <th>RPG</th>
+                                <th>APG</th>
+                                <th>SPG</th>
+                                <th>BPG</th>
+                                <th>FG%</th>
+                                <th>3P%</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="teamStatsTableBody"></tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="teams.js"></script>
+    <script src="script.js"></script>
+
+</body>
+
+</html>

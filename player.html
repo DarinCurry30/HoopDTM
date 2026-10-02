@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Hoop DTM — Player</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">🏀 Hoop DTM</a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+        <div class="search-container">
+    <input 
+        type="text" 
+        id="player-search" 
+        placeholder="Search players/teams..."
+        autocomplete="off"
+    >
+
+    <div id="search-results"></div>
+</div>
+        </div>
+    </nav>
+
+
+    <main>
+
+        <section class="player-profile">
+
+            <div class="player-header">
+
+                <div class="player-avatar" id="playerInitials">
+                    --
+                </div>
+
+                <div>
+                    <p class="player-label">PLAYER</p>
+
+                    <h1 id="playerName">Player</h1>
+
+                    <p class="player-team" id="playerTeam">
+                        Team · Position · Height
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="player-stats">
+
+                <div class="profile-stat">
+                    <span>25-26 PPG</span>
+                    <strong id="ppg">0.0</strong>
+                </div>
+
+                <div class="profile-stat">
+                    <span>25-26 RPG</span>
+                    <strong id="rpg">0.0</strong>
+                </div>
+
+                <div class="profile-stat">
+                    <span>25-26 APG</span>
+                    <strong id="apg">0.0</strong>
+                </div>
+
+                <div class="profile-stat">
+                    <span>25-26 FG%</span>
+                    <strong id="fg">0%</strong>
+                </div>
+
+                <div class="profile-stat">
+                    <span>25-26 3P%</span>
+                    <strong id="three">0%</strong>
+                </div>
+
+            </div>
+
+
+            <section class="profile-section">
+
+    <h2>Season Stats</h2>
+
+    <div class="table-container">
+
+        <table>
+
+            <thead>
+                <tr>
+                    <th>STAT</th>
+                    <th>2025–26</th>
+                    <th>CAREER</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>TEAM</td>
+                    <td id="season-team">—</td>
+                    <td>—</td>
+                </tr>
+
+                <tr>
+                    <td>GP</td>
+                    <td id="season-gp">0</td>
+                    <td id="career-gp">0</td>
+                </tr>
+
+                <tr>
+                    <td>PPG</td>
+                    <td id="season-ppg">0.0</td>
+                    <td id="career-ppg">0.0</td>
+                </tr>
+
+                <tr>
+                    <td>tPTS</td>
+                    <td id="season-tpts">0</td>
+                    <td id="career-tpts">0</td>
+                </tr>
+
+                <tr>
+                    <td>RPG</td>
+                    <td id="season-rpg">0.0</td>
+                    <td id="career-rpg">0.0</td>
+                </tr>
+
+                <tr>
+                    <td>tRBS</td>
+                    <td id="season-trbs">0.0</td>
+                    <td id="career-trbs">0.0</td>
+                </tr>
+
+                <tr>
+                    <td>APG</td>
+                    <td id="season-apg">0.0</td>
+                    <td id="career-apg">0.0</td>
+                </tr>
+
+                <tr>
+                    <td>tASTS</td>
+                    <td id="season-tasts">0.0</td>
+                    <td id="career-tasts">0.0</td>
+                </tr>
+
+                <tr>
+                    <td>SPG</td>
+                    <td id="season-spg">0.0</td>
+                    <td id="career-spg">0.0</td>
+                </tr>
+
+                <tr>
+                    <td>tSTS</td>
+                    <td id="season-tst">0.0</td>
+                    <td id="career-tst">0.0</td>
+                </tr>
+
+                <tr>
+                    <td>BPG</td>
+                    <td id="season-bpg">0.0</td>
+                    <td id="career-bpg">0.0</td>
+                </tr>
+
+                <tr>
+                    <td>tBKS</td>
+                    <td id="season-tbks">0.0</td>
+                    <td id="career-tbks">0.0</td>
+                </tr>
+
+                <tr>
+                    <td>FG%</td>
+                    <td id="season-fg">0%</td>
+                    <td id="career-fg">0%</td>
+                </tr>
+
+                <tr>
+                    <td>FG3%</td>
+                    <td id="season-fg3">0%</td>
+                    <td id="career-fg3">0%</td>
+                </tr>
+
+                <tr>
+                    <td>FT%</td>
+                    <td id="season-ft">0%</td>
+                    <td id="career-ft">0%</td>
+                </tr>
+
+                <tr>
+                    <td>TO</td>
+                    <td id="season-to">0</td>
+                    <td id="career-to">0</td>
+                </tr>
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+
+    </main>
+
+
+  <script src="teams.js"></script>
+<script src="script.js"></script>
+<script>
+    loadPlayer();
+</script>
+
+</body>
+</html>

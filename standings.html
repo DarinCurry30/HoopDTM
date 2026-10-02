@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Standings | Hoop DTM</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">
+            🏀 Hoop DTM
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="player-search"
+                    placeholder="Search players/teams..."
+                    autocomplete="off"
+                >
+
+                <div id="search-results"></div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="leaders-page">
+
+    <div class="page-header">
+
+    <h1>NBA Standings</h1>
+
+    <p>Regular Season Standings</p>
+
+    <div class="standings-filters">
+
+    <select id="standingsSeason">
+    <option value="2526">2025-26</option>
+    <option value="2425">2024-25</option>
+    </select>
+
+    <select id="standingsConference">
+    <option value="Eastern Conference">Eastern Conference</option>
+    <option value="Western Conference">Western Conference</option>
+</select>
+
+</div>
+
+</div>
+
+    <div class="standings-container">
+
+    <table class="standings-table">
+
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Team</th>
+                <th>W</th>
+                <th>L</th>
+                <th>Win%</th>
+                <th>GB</th>
+            </tr>
+        </thead>
+
+        <tbody id="standingsTableBody"></tbody>
+
+    </table>
+
+</div>
+
+</main>
+
+<script src="teams.js"></script>
+<script src="script.js"></script>
+<script>
+    loadStandings();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Players — Hoop DTM</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">🏀 Hoop DTM</a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+        <div class="search-container">
+    <input 
+        type="text" 
+        id="player-search" 
+        placeholder="Search players/teams..."
+        autocomplete="off"
+    >
+
+    <div id="search-results"></div>
+</div>
+        </div>
+    </nav>
+
+
+    <main>
+
+        <section class="players-page">
+
+            <h1>NBA Players</h1>
+
+            <p class="page-subtitle">
+                Browse basketball players and their statistics.
+            </p>
+
+            <div class="player-search">
+                <input
+                    type="text"
+                    id="playersSearch"
+                    placeholder="Search players..."
+                    onkeyup="filterPlayers()"
+                >
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+    <tr>
+        <th onclick="sortPlayers(0)"">PLAYER ↕</th>
+        <th onclick="sortPlayers(1)">TEAM ↕</th>
+        <th onclick="sortPlayers(2)">25-26 PPG ↕</th>
+        <th onclick="sortPlayers(3)">25-26 RPG ↕</th>
+        <th onclick="sortPlayers(4)">25-26 APG ↕</th>
+        <th onclick="sortPlayers(5)">25-26 FG% ↕</th>
+    </tr>
+</thead>
+                    <tbody id="playersList">
+</tbody>
+
+                </table>
+
+            </div>
+<h2><br><center>*Rookies' stats show up as N/A. Stats pulled from ESPN.com as of September 2026.</h2></center></h2>
+        </section>
+
+    </main>
+    
+</body>
+
+
+    
+
+
+<script src="teams.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Stats | Hoop DTM</title>
+
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">
+            🏀 Hoop DTM
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+        <div class="search-container">
+    <input 
+        type="text" 
+        id="player-search" 
+        placeholder="Search players/teams..."
+        autocomplete="off"
+    >
+
+    <div id="search-results"></div>
+</div>
+        </div>
+    </nav>
+</header>
+
+
+<main class="stats-page">
+
+    <div class="page-header">
+        <h1>Player Stats (2025-26 NBA Season) </h1>
+        <p>NBA player statistics</p>
+    </div>
+
+
+    <div class="stats-controls">
+
+        <input
+            type="text"
+            id="statsSearch"
+            placeholder="Search players..."
+        >
+
+        <select id="statFilter">
+            <option value="all">Name</option>
+            <option value="gp">Games Played</option>
+            <option value="ppg">Points Per Game</option>
+            <option value="rpg">Rebounds Per Game</option>
+            <option value="apg">Assists Per Game</option>
+            <option value="spg">Steals Per Game</option>
+            <option value="bpg">Blocks Per Game</option>
+            <option value="fg">Field Goal %</option>
+            <option value="three">3PT %</option>
+            <option value="ft">Free Throw %</option>
+        </select>
+
+    </div>
+
+
+    <div class="stats-table-container">
+
+        <table class="stats-table">
+
+            <thead>
+                <tr>
+                    <th>Player</th>
+                    <th>Team</th>
+                    <th>GP</th>
+                    <th>PPG</th>
+                    <th>RPG</th>
+                    <th>APG</th>
+                    <th>SPG</th>
+                    <th>BPG</th>
+                    <th>FG%</th>
+                    <th>3P%</th>
+                    <th>FT%</th>
+                </tr>
+            </thead>
+
+            <tbody id="statsTableBody">
+</tbody>
+
+        </table>
+
+    </div>
+<h2><br><center>*Rookies do not show up here. Teams and Stats for Each Player are from ESPN as of September 2026.</center></h2>
+</main>
+
+<script src="teams.js"></script>
+<script src="script.js"></script>
+
+
+</body>
+</html>

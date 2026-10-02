@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playoffs — Hoop DTM</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <nav>
+        <a href="index.html" class="logo">🏀 Hoop DTM</a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="player-search" 
+                    placeholder="Search players/teams..."
+                    autocomplete="off"
+                >
+                <div id="search-results"></div>
+            </div>
+        </div>
+    </nav>
+
+    <main class="playoffs-page">
+
+        <div class="playoffs-top">
+    <div class="playoffs-title">
+        <h1>NBA Playoffs</h1>
+        <p id="playoff-season">2026 NBA Playoffs</p>
+    </div>
+
+    <div class="playoff-year-select">
+        <label for="playoff-year">Season</label>
+        <select id="playoff-year">
+            <option value="2026">2026</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+        </select>
+    </div>
+</div>
+
+
+        <div class="playoff-bracket">
+
+    <div class="conference-label west-label">
+        Western Conference
+    </div>
+
+    <div class="conference-label east-label">
+        Eastern Conference
+    </div>
+
+    <div class="round west-first-round">
+        <h3>First Round</h3>
+
+        <div class="series">
+            <div class="team-box" data-team="west1">OKC</div>
+            <div class="team-box" data-team="west8">MEM</div>
+        </div>
+
+        <div class="series">
+            <div class="team-box" data-team="west4">DEN</div>
+            <div class="team-box" data-team="west5">LAC</div>
+        </div>
+
+        <div class="series">
+            <div class="team-box" data-team="west2">SAS</div>
+            <div class="team-box" data-team="west7">MIN</div>
+        </div>
+
+        <div class="series">
+            <div class="team-box" data-team="west3">LAL</div>
+            <div class="team-box" data-team="west6">HOU</div>
+        </div>
+    </div>
+
+    <div class="round west-semifinals">
+        <h3>Conference Semifinals</h3>
+
+        <div class="series">
+            <div class="team-box">TBD</div>
+            <div class="team-box">TBD</div>
+        </div>
+
+        <div class="series">
+            <div class="team-box">TBD</div>
+            <div class="team-box">TBD</div>
+        </div>
+    </div>
+
+    <div class="round west-conference-finals">
+        <h3>Conference Finals</h3>
+
+        <div class="series">
+            <div class="team-box">TBD</div>
+            <div class="team-box">TBD</div>
+        </div>
+    </div>
+
+    <div class="conference-winner west-winner">
+        <span>Western Champion</span>
+        <div class="winner-box">TBD</div>
+    </div>
+
+    <div class="nba-finals">
+        <div class="finals-icon">🏆</div>
+        <h2>NBA Finals</h2>
+
+        <div class="finals-series">
+            <div class="final-team">West</div>
+            <div class="finals-vs">VS</div>
+            <div class="final-team">East</div>
+        </div>
+
+        <div class="champion-box">
+            <span>NBA Champion</span>
+            <strong>TBD</strong>
+        </div>
+    </div>
+
+    <div class="conference-winner east-winner">
+        <span>Eastern Champion</span>
+        <div class="winner-box">TBD</div>
+    </div>
+
+    <div class="round east-conference-finals">
+        <h3>Conference Finals</h3>
+
+        <div class="series">
+            <div class="team-box">TBD</div>
+            <div class="team-box">TBD</div>
+        </div>
+    </div>
+
+    <div class="round east-semifinals">
+        <h3>Conference Semifinals</h3>
+
+        <div class="series">
+            <div class="team-box">TBD</div>
+            <div class="team-box">TBD</div>
+        </div>
+
+        <div class="series">
+            <div class="team-box">TBD</div>
+            <div class="team-box">TBD</div>
+        </div>
+    </div>
+
+    <div class="round east-first-round">
+        <h3>First Round</h3>
+
+        <div class="series">
+            <div class="team-box" data-team="east1">CLE</div>
+            <div class="team-box" data-team="east8">ORL</div>
+        </div>
+
+        <div class="series">
+            <div class="team-box" data-team="east4">NYK</div>
+            <div class="team-box" data-team="east5">MIA</div>
+        </div>
+
+        <div class="series">
+            <div class="team-box" data-team="east2">BOS</div>
+            <div class="team-box" data-team="east7">PHI</div>
+        </div>
+
+        <div class="series">
+            <div class="team-box" data-team="east3">MIL</div>
+            <div class="team-box" data-team="east6">IND</div>
+        </div>
+    </div>
+
+</div>
+
+    </main>
+
+    <script src="playoffs.js"></script>
+
+</body>
+</html>

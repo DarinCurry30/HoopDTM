@@ -1,0 +1,145 @@
+    <!DOCTYPE html>
+
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Leaders | Hoop DTM</title>
+
+    <link rel="stylesheet" href="style.css">
+
+
+    </head>
+
+    <body>
+
+
+    <header>
+        <nav>
+            <a href="index.html" class="logo">
+                🏀 Hoop DTM
+            </a>
+
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="players.html">Players</a>
+                <a href="teams.html">Teams</a>
+                <a href="leaders.html">Leaders</a>
+                <a href="stats.html">Stats</a>
+                <a href="standings.html">Standings</a>
+            <div class="search-container">
+        <input 
+            type="text" 
+            id="player-search" 
+            placeholder="Search players/teams..."
+            autocomplete="off"
+        >
+
+        <div id="search-results"></div>
+    </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="leaders-page">
+
+        <div class="page-header">
+        <h1 id="leaderPageTitle">League Leaders</h1>
+        <p id="leaderPageDescription">Top performers across the NBA</p>
+
+        <select id="leaderType" autocomplete="off">
+    <option value="season" selected>2025-26</option>
+    <option value="career">Career</option>
+</select>
+    </div>
+
+        <div class="leaders-grid">
+
+        <div class="leader-card" data-stat="ppg" onclick="window.location.href='leader-ppg.html'">            
+            <h2>PPG</h2>
+            <p class="leader-description">Points Per Game</p>
+            <div class="leader-list" id="ppg-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="tpts">
+            <h2>Total Points</h2>
+            <p class="leader-description">Total Points</p>
+            <div class="leader-list" id="tpts-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="apg">
+            <h2>APG</h2>
+            <p class="leader-description">Assists Per Game</p>
+            <div class="leader-list" id="apg-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="tasts">
+            <h2>Total Assists</h2>
+            <p class="leader-description">Total Assists</p>
+            <div class="leader-list" id="tasts-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="rpg">
+            <h2>RPG</h2>
+            <p class="leader-description">Rebounds Per Game</p>
+            <div class="leader-list" id="rpg-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="trbs">
+            <h2>Total Rebounds</h2>
+            <p class="leader-description">Total Rebounds</p>
+            <div class="leader-list" id="trbs-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="bpg">
+            <h2>BPG</h2>
+            <p class="leader-description">Blocks Per Game</p>
+            <div class="leader-list" id="bpg-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="tbks">
+            <h2>Total Blocks</h2>
+            <p class="leader-description">Total Blocks</p>
+            <div class="leader-list" id="tbks-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="spg">
+            <h2>SPG</h2>
+            <p class="leader-description">Steals Per Game</p>
+            <div class="leader-list" id="spg-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="tst">
+            <h2>Total Steals</h2>
+            <p class="leader-description">Total Steals</p>
+            <div class="leader-list" id="tst-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="fg">
+            <h2>FG%</h2>
+            <p class="leader-description">Field Goal Percentage</p>
+            <div class="leader-list" id="fg-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="fg3">
+            <h2>3P%</h2>
+            <p class="leader-description">Three-Point Percentage</p>
+            <div class="leader-list" id="fg3-leaders"></div>
+        </div>
+
+        <div class="leader-card" data-stat="ft">
+            <h2>FT%</h2>
+            <p class="leader-description">Free Throw Percentage</p>
+            <div class="leader-list" id="ft-leaders"></div>
+        </div>
+
+    </div>
+
+    </main>
+
+    <script src="teams.js"></script>
+<script src="script.js"></script>
+
+    </body>
+    </html>

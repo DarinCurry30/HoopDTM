@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Total Steals Leaders | Hoop DTM</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <nav>
+        <a href="index.html" class="logo">
+            🏀 Hoop DTM
+        </a>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+
+            <div class="search-container">
+                <input
+                    type="text"
+                    id="player-search"
+                    placeholder="Search players/teams..."
+                    autocomplete="off"
+                >
+
+                <div id="search-results"></div>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main class="leaders-page">
+
+    <div class="page-header">
+
+        <h1>Total Steals Leaders</h1>
+
+        <p>Top 30 players in Total Steals</p>
+
+        <select id="leaderType" autocomplete="off">
+    <option value="season" selected>2025-26</option>
+    <option value="career">Career</option>
+</select>
+
+    </div>
+
+    <div id="leaderTop30"></div>
+
+</main>
+
+<script src="teams.js"></script>
+<script src="script.js"></script>
+
+<script>
+    loadLeaderTop30("tst");
+</script>
+
+</body>
+</html>
