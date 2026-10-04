@@ -2098,3 +2098,12 @@ nav a {
 .east-label {
     width: calc(50% - 100px);
 }
+/* PLAYOFF SERIES WINNER */
+.team-box.series-winner {
+    border: 2px solid #ff7a00 !important;
+    box-shadow: 0 0 8px rgba(255, 122, 0, 0.25);
+}
+.team-box.series-winner {
+    border: 2px solid #ff7a00 !important;
+    box-shadow: 0 0 8px rgba(255, 122, 0, 0.25);
+}
