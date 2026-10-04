@@ -158,36 +158,83 @@ const playoffData = {
             ],
 
             conferenceFinals: [
-                { team1: "OKC", team2: "MIN" }
+                { team1: "DEN", team2: "LAL" }
             ],
 
-            champion: "OKC"
+            champion: "DEN"
         },
 
         east: {
             firstRound: [
-                { team1: "CLE", team2: "MIA" },
-                { team1: "IND", team2: "MIL" },
-                { team1: "NY", team2: "DET" },
-                { team1: "BOS", team2: "ORL" }
+                { team1: "MIL", team2: "MIA" },
+                { team1: "CLE", team2: "NY" },
+                { team1: "PHI", team2: "BKN" },
+                { team1: "BOS", team2: "ATL" }
             ],
 
             semifinals: [
-                { team1: "CLE", team2: "IND" },
-                { team1: "NY", team2: "BOS" }
+                { team1: "MIA", team2: "NY" },
+                { team1: "PHI", team2: "BOS" }
             ],
 
             conferenceFinals: [
-                { team1: "IND", team2: "NY" }
+                { team1: "MIA", team2: "BOS" }
             ],
 
-            champion: "IND"
+            champion: "MIA"
         },
 
         finals: {
-            team1: "OKC",
-            team2: "IND",
-            champion: "OKC THUNDER"
+            team1: "DEN",
+            team2: "MIA",
+            champion: "DEN NUGGETS"
+        }
+    },
+    "2021-22": {
+        west: {
+            firstRound: [
+                { team1: "PHX", team2: "NO" },
+                { team1: "DAL", team2: "UTA" },
+                { team1: "GS", team2: "DEN" },
+                { team1: "MEM", team2: "MIN" }
+            ],
+
+            semifinals: [
+                { team1: "PHX", team2: "DAL" },
+                { team1: "GS", team2: "MEM" }
+            ],
+
+            conferenceFinals: [
+                { team1: "DAL", team2: "GS" }
+            ],
+
+            champion: "GS"
+        },
+
+        east: {
+            firstRound: [
+                { team1: "MIA", team2: "ATL" },
+                { team1: "PHI", team2: "TOR" },
+                { team1: "MIL", team2: "CHI" },
+                { team1: "BOS", team2: "BKN" }
+            ],
+
+            semifinals: [
+                { team1: "MIA", team2: "PHI" },
+                { team1: "MIL", team2: "BOS" }
+            ],
+
+            conferenceFinals: [
+                { team1: "MIA", team2: "BOS" }
+            ],
+
+            champion: "BOS"
+        },
+
+        finals: {
+            team1: "GS",
+            team2: "BOS",
+            champion: "GS WARRIORS"
         }
     }
 };
