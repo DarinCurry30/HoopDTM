@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Series — Hoop DTM</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        .series-page,
+.games-section {
+    font-family: inherit;
+}
+        .series-page {
+            padding: 40px 50px;
+        }
+
+        .series-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .series-header h1 {
+            margin-bottom: 8px;
+        }
+
+        .series-header p {
+            color: #aaa;
+        }
+
+        .series-matchup {
+            max-width: 700px;
+            margin: 0 auto;
+            background: #15151b;
+            border: 1px solid #24242b;
+            border-radius: 14px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid #bd8723
+        }
+
+        .series-teams {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 30px;
+            
+        }
+
+        .series-team {
+            min-width: 120px;
+            padding: 20px;
+            background: #0c0c0e;
+            border: 1px solid #2d2d35;
+            border-radius: 8px;
+            font-size: 20px;
+            font-weight: 900;
+            
+        }
+
+        .series-vs {
+            color: #888;
+            font-weight: 800;
+        }
+.series-team-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.series-team {
+    min-width: 90px;
+    padding: 20px;
+    background: #0c0c0e;
+    border: 1px solid #2d2d35;
+    border-radius: 8px;
+    font-size: 20px;
+    font-weight: 900;
+    text-align: center;
+    border: 1px solid #bd8723
+}
+.series-team {
+    cursor: pointer;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.series-team:hover {
+    transform: translateY(-2px);
+}
+.series-seed {
+    width: 55px;
+    height: 55px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: #0c0c0e;
+    border: 1px solid #2d2d35;
+    border-radius: 5px;
+
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 900;
+    border: 1px solid #bd8723
+}
+.back-to-playoffs {
+    display: block;
+    width: fit-content;
+    margin: 25px auto 0;
+    padding: 10px 18px;
+    background: #15151b;
+    border: 1px solid #2d2d35;
+    border-radius: 7px;
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 800;
+    transition: 0.3s ease;
+}
+
+.back-to-playoffs:hover {
+    border-color: #ff7a00;
+    transform: translateY(-2px);
+}
+.games-section {
+    max-width: 1100px;
+    margin: 40px auto 0;
+}
+
+.games-section h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+    font-weight: 900;
+}
+
+.games-section table {
+    width: 100%;
+    table-layout: auto;
+}
+
+.games-section table th,
+.games-section table td {
+    white-space: nowrap;
+    text-align: center;
+}
+
+.games-section table th:nth-child(1),
+.games-section table td:nth-child(1) {
+    width: 80px;
+}
+
+.games-section table th:nth-child(2),
+.games-section table td:nth-child(2) {
+    width: 80px;
+}
+
+.games-section table th:nth-child(3),
+.games-section table td:nth-child(3) {
+    width: 100px;
+}
+
+.games-section table th:nth-child(4),
+.games-section table td:nth-child(4) {
+    width: 1%;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.games-section table th:nth-child(5),
+.games-section table td:nth-child(5),
+.games-section table th:nth-child(6),
+.games-section table td:nth-child(6),
+.games-section table th:nth-child(7),
+.games-section table td:nth-child(7) {
+    width: 45px;
+}
+
+.series-result {
+    max-width: 1100px;
+    margin: 35px auto 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 900;
+    color: #ffffff;
+}
+
+.series-result .result-team {
+    color: #ff7a00;
+}
+    </style>
+</head>
+
+<body>
+
+<nav>
+    <a href="index.html" class="logo">🏀 Hoop DTM</a>
+
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="players.html">Players</a>
+        <a href="teams.html">Teams</a>
+        <a href="leaders.html">Leaders</a>
+        <a href="stats.html">Stats</a>
+        <a href="standings.html">Standings</a>
+        <a href="playoffs.html">Playoffs</a>
+
+        <div class="search-container">
+            <input
+                type="text"
+                id="player-search"
+                placeholder="Search players/teams..."
+                autocomplete="off"
+            >
+
+            <div id="search-results"></div>
+        </div>
+    </div>
+</nav>
+
+<main class="series-page">
+
+    <div class="series-header">
+        <h1 id="series-title">NBA Playoffs</h1>
+        <p id="series-round">Series</p>
+    </div>
+
+    <div class="series-matchup">
+
+<div class="series-teams">
+
+    <div class="series-team-wrapper">
+        <div class="series-seed" id="seed1">-</div>
+        <div class="series-team" id="team1">TBD</div>
+    </div>
+
+    <div class="series-vs">VS</div>
+
+    <div class="series-team-wrapper">
+        <div class="series-team" id="team2">TBD</div>
+        <div class="series-seed" id="seed2">-</div>
+    </div>
+
+</div>
+
+    </div>
+
+</main>
+
+<div class="series-result" id="series-result"></div>
+
+<section class="games-section">
+
+<section class="games-section">
+    <h2>Games</h2>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>GAME</th>
+                    <th>WINNER</th>
+                    <th>SCORE</th>
+                    <th>PLAYER</th>
+                    <th>PTS</th>
+                    <th>REB</th>
+                    <th>AST</th>
+                </tr>
+            </thead>
+
+            <tbody id="games-table-body">
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<a href="playoffs.html" class="back-to-playoffs">← Back to Playoffs</a>
+
+<script src="playoffData.js"></script>
+
+<script src="playoffData.js"></script>
+
+<script>
+    const teamSlugs = {
+        BOS: "boston-celtics",
+        MIA: "miami-heat",
+        NY: "new-york-knicks",
+        NYK: "new-york-knicks",
+        CLE: "cleveland-cavaliers",
+        OKC: "oklahoma-city-thunder",
+        DEN: "denver-nuggets",
+        LAL: "los-angeles-lakers",
+        MEM: "memphis-grizzlies",
+        SAS: "san-antonio-spurs",
+        SA: "san-antonio-spurs",
+        MIN: "minnesota-timberwolves",
+        HOU: "houston-rockets",
+        LAC: "los-angeles-clippers",
+        MIL: "milwaukee-bucks",
+        PHI: "philadelphia-76ers",
+        IND: "indiana-pacers",
+        ORL: "orlando-magic",
+        GS: "golden-state-warriors",
+        GSW: "golden-state-warriors",
+        SAC: "sacramento-kings",
+        NO: "new-orleans-pelicans",
+        PHX: "phoenix-suns",
+        POR: "portland-trail-blazers",
+        ATL: "atlanta-hawks",
+        TOR: "toronto-raptors",
+        DAL: "dallas-mavericks",
+        UTA: "utah-jazz",
+        BKN: "brooklyn-nets",
+        CHI: "chicago-bulls"
+    };
+
+    const params = new URLSearchParams(window.location.search);
+
+    const season = params.get("season");
+    const round = params.get("round");
+    const conference = params.get("conference");
+    const seriesIndex = Number(params.get("series"));
+
+    const seed1 = document.getElementById("seed1");
+    const seed2 = document.getElementById("seed2");
+    const seriesTitle = document.getElementById("series-title");
+    const seriesRound = document.getElementById("series-round");
+    const team1 = document.getElementById("team1");
+    const team2 = document.getElementById("team2");
+    const gamesTableBody = document.getElementById("games-table-body");
+    const seriesResult = document.getElementById("series-result");
+
+    const seasonData = playoffData[season];
+
+    let matchupData = null;
+
+    if (seasonData) {
+        if (round === "finals") {
+            matchupData = seasonData.finals;
+        } else if (conference === "west") {
+            matchupData = seasonData.west?.[round]?.[seriesIndex];
+        } else if (conference === "east") {
+            matchupData = seasonData.east?.[round]?.[seriesIndex];
+        }
+    }
+
+    seriesTitle.textContent = season
+        ? `${season} NBA Playoffs`
+        : "NBA Playoffs";
+
+    let roundName = "Series";
+
+    if (round === "firstRound") {
+        roundName = "First Round";
+    } else if (round === "semifinals") {
+        roundName = "Conference Semifinals";
+    } else if (round === "conferenceFinals") {
+        roundName = "Conference Finals";
+    } else if (round === "finals") {
+        roundName = "NBA Finals";
+    }
+
+    let team1Code = "";
+    let team2Code = "";
+
+    /* =========================
+       MATCHUP
+    ========================= */
+
+    if (matchupData) {
+        const rawTeam1 = matchupData.team1;
+        const rawTeam2 = matchupData.team2;
+
+        const team1Parts = rawTeam1.split(" ");
+        const team2Parts = rawTeam2.split(" ");
+
+        team1Code = team1Parts[0];
+        team2Code = team2Parts[0];
+
+        const team1Seed = team1Parts[1];
+        const team2Seed = team2Parts[1];
+
+        team1.textContent = team1Code;
+        team2.textContent = team2Code;
+
+        seed1.textContent = team1Seed || "-";
+        seed2.textContent = team2Seed || "-";
+
+        /* TEAM 1 CLICK */
+        if (teamSlugs[team1Code]) {
+            team1.onclick = function () {
+                window.location.href =
+                    `team.html?team=${teamSlugs[team1Code]}`;
+            };
+        }
+
+        /* TEAM 2 CLICK */
+        if (teamSlugs[team2Code]) {
+            team2.onclick = function () {
+                window.location.href =
+                    `team.html?team=${teamSlugs[team2Code]}`;
+            };
+        }
+
+        const conferenceName =
+            conference === "west" ? "West" :
+            conference === "east" ? "East" :
+            "";
+
+        seriesRound.textContent =
+            `${conferenceName} ${roundName} ${team1Code} vs. ${team2Code}`;
+    } else {
+        team1.textContent = "TBD";
+        team2.textContent = "TBD";
+        seed1.textContent = "-";
+        seed2.textContent = "-";
+        seriesRound.textContent = roundName;
+    }
+
+    /* =========================
+       GAME DATA
+    ========================= */
+
+    const gameSeries =
+        round === "finals"
+            ? seriesData?.[season]?.finals
+            : seriesData?.[season]?.[conference]?.[round]?.[seriesIndex];
+
+    /* =========================
+       SERIES RESULT
+    ========================= */
+
+    if (
+        seriesResult &&
+        gameSeries &&
+        gameSeries.games &&
+        gameSeries.games.length > 0 &&
+        matchupData
+    ) {
+        const wins = {};
+
+        gameSeries.games.forEach(game => {
+            wins[game.winner] = (wins[game.winner] || 0) + 1;
+        });
+
+        const team1Wins = wins[team1Code] || 0;
+        const team2Wins = wins[team2Code] || 0;
+
+        if (team1Wins > team2Wins) {
+            seriesResult.innerHTML =
+                `<span class="result-team">${team1Code}</span> wins ${team1Wins}-${team2Wins}`;
+        } else if (team2Wins > team1Wins) {
+            seriesResult.innerHTML =
+                `<span class="result-team">${team2Code}</span> wins ${team2Wins}-${team1Wins}`;
+        }
+    }
+
+    /* =========================
+       GAMES TABLE
+    ========================= */
+
+    if (gameSeries && gameSeries.games) {
+
+        gameSeries.games.forEach(game => {
+
+            const row = document.createElement("tr");
+
+            row.innerHTML = `
+                <td>Game ${game.game}</td>
+                <td>${game.winner}</td>
+                <td>${game.score}</td>
+                <td>${game.player}</td>
+                <td>${game.pts}</td>
+                <td>${game.reb}</td>
+                <td>${game.ast}</td>
+            `;
+
+            gamesTableBody.appendChild(row);
+        });
+
+    }
+</script>
+</body>
+</html>

@@ -9,6 +9,7 @@ body {
     color: white;
     font-family: Arial, sans-serif;
     min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 nav {
@@ -151,6 +152,25 @@ nav {
     background: #15151b;
     border: 1px solid #24242b;
     border-radius: 12px;
+    .games-section table th:nth-child(1),
+.games-section table td:nth-child(1),
+.games-section table th:nth-child(2),
+.games-section table td:nth-child(2),
+.games-section table th:nth-child(3),
+.games-section table td:nth-child(3),
+.games-section table th:nth-child(4),
+.games-section table td:nth-child(4) {
+    font-size: 16px;
+}
+
+.games-section table th:nth-child(5),
+.games-section table td:nth-child(5),
+.games-section table th:nth-child(6),
+.games-section table td:nth-child(6),
+.games-section table th:nth-child(7),
+.games-section table td:nth-child(7) {
+    font-size: 11px;
+}
 }
 
 table {
@@ -1399,7 +1419,7 @@ nav a {
 }
 
 .nav-links a:hover {
-    color: #e87500;
+    color: #f0b208;
     text-shadow: 0 0 14px rgba(232, 117, 0, 0.7);
 }
 /* =========================================
@@ -1702,14 +1722,17 @@ nav a {
     margin: 0 !important;
     padding: 0 !important;
 
-    background: #15151b !important;
+    background: #0c0c0e !important;
     border: 1px solid #2d2d35 !important;
     border-radius: 4px !important;
 
+    -webkit-text-stroke: 0.25px #eeebeb;
+
     color: #ffffff !important;
 
-    font-size: 10px !important;
-    font-weight: 800 !important;
+    font-family: "Roboto Condensed", Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
     line-height: 1 !important;
 
     box-sizing: border-box;
@@ -1717,10 +1740,7 @@ nav a {
     cursor: pointer;
 }
 
-.team-box:hover {
-    border-color: #ff7a00 !important;
-    background: #1d1d24 !important;
-}
+
 
 /* =========================================
    CONFERENCE WINNER
@@ -1754,23 +1774,34 @@ nav a {
 }
 
 .winner-box {
-    width: 72px !important;
-    height: 28px !important;
+   width: 68px !important;
+    height: 27px !important;
+
+    flex-shrink: 0;
 
     display: flex !important;
     align-items: center !important;
     justify-content: center !important;
 
-    background: #18181f !important;
-    border: 1px solid #ff7a00 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+
+    background: #0c0c0e !important;
+    border: 1px solid #2d2d35 !important;
     border-radius: 4px !important;
+
+    -webkit-text-stroke: 0.25px #eeebeb;
 
     color: #ffffff !important;
 
-    font-size: 10px !important;
-    font-weight: 800 !important;
+    font-family: "Roboto Condensed", Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
 
     box-sizing: border-box;
+
+    cursor: pointer;
 }
 
 /* =========================================
@@ -1829,14 +1860,19 @@ nav a {
     align-items: center;
     justify-content: center;
 
-    background: #15151b;
-    border: 1px solid #2d2d35;
-    border-radius: 4px;
+    
+    background: #0c0c0e !important;
+    border: 1px solid #2d2d35 !important;
+    border-radius: 4px !important;
 
-    color: #ffffff;
+    -webkit-text-stroke: 0.25px #eeebeb;
 
-    font-size: 9px;
-    font-weight: 800;
+    color: #ffffff !important;
+
+    font-family: "Roboto Condensed", Arial, sans-serif !important;
+    font-size: 13px !important;
+    font-weight: 900 !important;
+    line-height: 1 !important;
 }
 
 .finals-vs {
@@ -1974,12 +2010,6 @@ nav a {
             minmax(75px, 1fr)
             minmax(75px, 1fr) !important;
     }
-
-    .team-box {
-        width: 58px !important;
-        height: 25px !important;
-        font-size: 9px !important;
-    }
 }
 /* =========================================
    PLAYOFF HEADER / ROUND LABEL FIX
@@ -2103,7 +2133,17 @@ nav a {
     border: 2px solid #ff7a00 !important;
     box-shadow: 0 0 8px rgba(255, 122, 0, 0.25);
 }
-.team-box.series-winner {
-    border: 2px solid #ff7a00 !important;
-    box-shadow: 0 0 8px rgba(255, 122, 0, 0.25);
+.series-box {
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    padding: 3px;
+    gap: 2px;
+}
+
+.series-box:hover {
+    border-color: #ff7a00;
+    background: #1d1d24;
 }
