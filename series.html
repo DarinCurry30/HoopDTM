@@ -78,7 +78,6 @@
     font-size: 20px;
     font-weight: 900;
     text-align: center;
-    border: 1px solid #bd8723
 }
 .series-team {
     cursor: pointer;
@@ -87,6 +86,7 @@
 
 .series-team:hover {
     transform: translateY(-2px);
+    box-shadow: 0 0 14px rgba(232, 117, 0, 0.7);
 }
 .series-seed {
     width: 55px;
@@ -103,7 +103,9 @@
     color: #ffffff;
     font-size: 24px;
     font-weight: 900;
-    border: 1px solid #bd8723
+}
+.series-seed:hover{
+    box-shadow: 0 0 14px rgba(232, 117, 0, 0.7);
 }
 .back-to-playoffs {
     display: block;
@@ -127,6 +129,9 @@
 .games-section {
     max-width: 1100px;
     margin: 40px auto 0;
+    padding: 0 10px;
+    box-sizing: border-box;
+    overflow-x: clip;
 }
 
 .games-section h2 {
@@ -136,7 +141,8 @@
 }
 
 .games-section table {
-    width: 100%;
+    width: calc(100% - 20px);
+    margin: 0 10px;
     table-layout: auto;
 }
 
@@ -189,10 +195,62 @@
 .series-result .result-team {
     color: #ff7a00;
 }
+.featured-player {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    transition: color 0.3s ease;
+}
+
+.featured-player:hover {
+    color: #ff7a00;
+}
+.featured-team {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    transition: color 0.3s ease;
+}
+
+.featured-team:hover {
+    color: #ff7a00;
+}
+.result-team {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 800;
+    display: inline-block;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.result-team:hover {
+    color: #ff7a00;
+    transform: translateY(-2px);
+}
+.games-section tbody tr {
+    cursor: default;
+    transition: transform 0.2s ease;
+}
+
+.games-section tbody tr:hover {
+    transform: translateX(5px);
+}
     </style>
 </head>
 
 <body>
+
+    
+<div id="series-loading-screen">
+    <div class="loading-content">
+        <div class="loading-spinner"></div>
+        <h2>HOOP <span>DTM</span></h2>
+        <p>LOADING SERIES...</p>
+        <div class="loading-bar">
+            <div class="loading-bar-fill"></div>
+        </div>
+    </div>
+</div>
 
 <nav>
     <a href="index.html" class="logo">🏀 Hoop DTM</a>
@@ -251,8 +309,6 @@
 <div class="series-result" id="series-result"></div>
 
 <section class="games-section">
-
-<section class="games-section">
     <h2>Games</h2>
 
     <div class="table-container">
@@ -262,22 +318,22 @@
                     <th>GAME</th>
                     <th>WINNER</th>
                     <th>SCORE</th>
-                    <th>PLAYER</th>
+                    <th>FEATURED PLAYER</th>
                     <th>PTS</th>
                     <th>REB</th>
                     <th>AST</th>
                 </tr>
             </thead>
 
-            <tbody id="games-table-body">
-            </tbody>
+            <tbody id="games-table-body"></tbody>
         </table>
     </div>
 </section>
 
-<a href="playoffs.html" class="back-to-playoffs">← Back to Playoffs</a>
-
-<script src="playoffData.js"></script>
+<a href="playoffs.html" class="back-to-playoffs">
+    ← Back to Playoffs
+</a>
+<h><br><br><br><br></h>
 
 <script src="playoffData.js"></script>
 
@@ -364,16 +420,12 @@
     let team1Code = "";
     let team2Code = "";
 
-    /* =========================
-       MATCHUP
-    ========================= */
+    /* MATCHUP */
 
     if (matchupData) {
-        const rawTeam1 = matchupData.team1;
-        const rawTeam2 = matchupData.team2;
 
-        const team1Parts = rawTeam1.split(" ");
-        const team2Parts = rawTeam2.split(" ");
+        const team1Parts = matchupData.team1.split(" ");
+        const team2Parts = matchupData.team2.split(" ");
 
         team1Code = team1Parts[0];
         team2Code = team2Parts[0];
@@ -387,7 +439,6 @@
         seed1.textContent = team1Seed || "-";
         seed2.textContent = team2Seed || "-";
 
-        /* TEAM 1 CLICK */
         if (teamSlugs[team1Code]) {
             team1.onclick = function () {
                 window.location.href =
@@ -395,7 +446,6 @@
             };
         }
 
-        /* TEAM 2 CLICK */
         if (teamSlugs[team2Code]) {
             team2.onclick = function () {
                 window.location.href =
@@ -410,76 +460,197 @@
 
         seriesRound.textContent =
             `${conferenceName} ${roundName} ${team1Code} vs. ${team2Code}`;
+
     } else {
+
         team1.textContent = "TBD";
         team2.textContent = "TBD";
+
         seed1.textContent = "-";
         seed2.textContent = "-";
+
         seriesRound.textContent = roundName;
     }
 
-    /* =========================
-       GAME DATA
-    ========================= */
+
+    /* GAME DATA */
 
     const gameSeries =
         round === "finals"
             ? seriesData?.[season]?.finals
             : seriesData?.[season]?.[conference]?.[round]?.[seriesIndex];
 
-    /* =========================
-       SERIES RESULT
-    ========================= */
+
+    /* SERIES RESULT */
 
     if (
-        seriesResult &&
         gameSeries &&
         gameSeries.games &&
         gameSeries.games.length > 0 &&
         matchupData
     ) {
-        const wins = {};
 
-        gameSeries.games.forEach(game => {
-            wins[game.winner] = (wins[game.winner] || 0) + 1;
-        });
+const wins = {};
 
-        const team1Wins = wins[team1Code] || 0;
-        const team2Wins = wins[team2Code] || 0;
+gameSeries.games.forEach(game => {
+    wins[game.winner] =
+        (wins[game.winner] || 0) + 1;
+});
 
-        if (team1Wins > team2Wins) {
-            seriesResult.innerHTML =
-                `<span class="result-team">${team1Code}</span> wins ${team1Wins}-${team2Wins}`;
-        } else if (team2Wins > team1Wins) {
-            seriesResult.innerHTML =
-                `<span class="result-team">${team2Code}</span> wins ${team2Wins}-${team1Wins}`;
-        }
+const team1Wins = wins[team1Code] || 0;
+const team2Wins = wins[team2Code] || 0;
+
+let nextRound = "";
+
+if (round === "firstRound") {
+    nextRound = "moves on to Conference Semifinals";
+} else if (round === "semifinals") {
+    nextRound = "moves on to Conference Finals";
+} else if (round === "conferenceFinals") {
+    nextRound = "moves on to the NBA Finals";
+} else if (round === "finals") {
+    nextRound = "wins the NBA Championship";
+}
+
+if (team1Wins > team2Wins) {
+
+    seriesResult.innerHTML =
+        `<a href="team.html?team=${teamSlugs[team1Code]}" class="result-team">
+            ${team1Code}
+        </a> wins ${team1Wins}-${team2Wins}, ${nextRound}`;
+
+} else if (team2Wins > team1Wins) {
+
+    seriesResult.innerHTML =
+        `<a href="team.html?team=${teamSlugs[team2Code]}" class="result-team">
+            ${team2Code}
+        </a> wins ${team2Wins}-${team1Wins}, ${nextRound}`;
+}
     }
 
-    /* =========================
-       GAMES TABLE
-    ========================= */
 
-    if (gameSeries && gameSeries.games) {
+    /* GAMES TABLE */
+
+    if (
+        gameSeries &&
+        gameSeries.games &&
+        gamesTableBody
+    ) {
 
         gameSeries.games.forEach(game => {
 
             const row = document.createElement("tr");
 
+            const playerSlug = game.player
+                .toLowerCase()
+                .replace(/'/g, "")
+                .replace(/[^a-z0-9]+/g, "-")
+                .replace(/^-|-$/g, "");
+
             row.innerHTML = `
                 <td>Game ${game.game}</td>
-                <td>${game.winner}</td>
+
+                <td>
+    <a
+        href="team.html?team=${teamSlugs[game.winner]}"
+        class="featured-team"
+    >
+        ${game.winner}
+    </a>
+</td>
+
                 <td>${game.score}</td>
-                <td>${game.player}</td>
+
+                <td>
+                    <a
+                        href="player.html?player=${playerSlug}"
+                        class="featured-player"
+                    >
+                        ${game.player}
+                    </a>
+                </td>
+
                 <td>${game.pts}</td>
+
                 <td>${game.reb}</td>
+
                 <td>${game.ast}</td>
             `;
 
             gamesTableBody.appendChild(row);
         });
-
     }
+document.addEventListener("DOMContentLoaded", () => {
+    const loadingScreen = document.getElementById("series-loading-screen");
+    const progressBar = document.querySelector(".loading-bar-fill");
+
+    if (!loadingScreen || !progressBar) return;
+
+    let loadingTimer;
+    let progressFrame;
+    let navigationStarted = false;
+
+    function startLoading(onComplete) {
+        clearInterval(loadingTimer);
+        cancelAnimationFrame(progressFrame);
+
+        navigationStarted = true;
+        loadingScreen.classList.remove("hidden");
+        progressBar.style.width = "0%";
+
+        // Random duration between 1.5 and 3 seconds.
+        const duration = 1500 + Math.random() * 1500;
+        const startTime = performance.now();
+
+        function updateProgress(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min((elapsed / duration) * 100, 100);
+
+            progressBar.style.width = progress + "%";
+
+            if (progress < 100) {
+                progressFrame = requestAnimationFrame(updateProgress);
+            } else if (onComplete) {
+                onComplete();
+            }
+        }
+
+        progressFrame = requestAnimationFrame(updateProgress);
+    }
+
+    // Hide the loader after the initial page has loaded.
+    window.addEventListener("load", () => {
+        if (navigationStarted) return;
+
+        startLoading(() => {
+            loadingScreen.classList.add("hidden");
+        });
+    });
+
+    // Show the loader when opening a series link.
+    document.querySelectorAll('a[href*="series.html"]').forEach(link => {
+        link.addEventListener("click", event => {
+            if (
+                event.ctrlKey ||
+                event.metaKey ||
+                event.shiftKey ||
+                event.altKey ||
+                event.button !== 0
+            ) return;
+
+            const url = new URL(link.href, window.location.href);
+
+            if (url.href === window.location.href) return;
+
+            event.preventDefault();
+
+            startLoading(() => {
+                window.location.href = url.href;
+            });
+        });
+    });
+});
 </script>
+
 </body>
 </html>

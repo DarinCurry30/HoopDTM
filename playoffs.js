@@ -1,23 +1,4 @@
 const teamColors = {
-    BOS: "#007A33",
-    MIA: "#980000",
-    NY: "#db4c0a",
-    CLE: "#580303",
-    OKC: "#007AC1",
-    DEN: "#0E2240",
-    LAL: "#47206b",
-    MEM: "#5D76A9",
-    SA: "#000000",
-    MIN: "#1f5537",
-    HOU: "#CE1141",
-    LAC: "#da4848",
-    MIL: "#00471B",
-    PHI: "#c93030",
-    IND: "#002D62",
-    ORL: "#0077C0",
-    GS: "#1D428A",
-    SAC: "#3a1663",
-    NO: "#65418f"
 };
 
 
@@ -245,14 +226,70 @@ setSeries(finalsSeries, {
 }
 
 
+
 document.addEventListener("DOMContentLoaded", function() {
-
     const yearSelect = document.getElementById("playoff-year");
+    const screen = document.getElementById("series-loading-screen");
+    const bar = document.querySelector(".loading-bar-fill");
 
-    loadPlayoffSeason(yearSelect.value);
+    if (!yearSelect) return;
+
+    let loadToken = 0;
+
+    function showBracket(season) {
+        const token = ++loadToken;
+
+        if (!screen || !bar) {
+            loadPlayoffSeason(season);
+            return;
+        }
+
+        screen.classList.remove("hidden");
+        bar.style.width = "0%";
+
+        const message = document.getElementById("loading-message");
+
+if (message) {
+    const displayYear = season.split("-")[0] === "2025"
+        ? "2026"
+        : season.split("-")[0] === "2024"
+        ? "2025"
+        : season.split("-")[0] === "2023"
+        ? "2024"
+        : season.split("-")[0] === "2022"
+        ? "2023"
+        : "2022";
+
+    message.textContent = `LOADING ${displayYear} BRACKET...`;
+}
+
+        const duration = 1500 + Math.random() * 1500;
+        const startTime = performance.now();
+
+        function update(now) {
+            if (token !== loadToken) return;
+
+            const progress = Math.min(
+                ((now - startTime) / duration) * 100,
+                100
+            );
+
+            bar.style.width = progress + "%";
+
+            if (progress < 100) {
+                requestAnimationFrame(update);
+            } else {
+                loadPlayoffSeason(season);
+                screen.classList.add("hidden");
+            }
+        }
+
+        requestAnimationFrame(update);
+    }
+
+    showBracket(yearSelect.value);
 
     yearSelect.addEventListener("change", function() {
-        loadPlayoffSeason(this.value);
+        showBracket(this.value);
     });
-
 });
