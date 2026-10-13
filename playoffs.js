@@ -227,10 +227,12 @@ setSeries(finalsSeries, {
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
+
+document.addEventListener("DOMContentLoaded", function () {
     const yearSelect = document.getElementById("playoff-year");
     const screen = document.getElementById("series-loading-screen");
-    const bar = document.querySelector(".loading-bar-fill");
+    const bar = document.querySelector("#series-loading-screen .loading-bar-fill");
+    const message = document.getElementById("loading-message");
 
     if (!yearSelect) return;
 
@@ -247,21 +249,19 @@ document.addEventListener("DOMContentLoaded", function() {
         screen.classList.remove("hidden");
         bar.style.width = "0%";
 
-        const message = document.getElementById("loading-message");
+        if (message) {
+            const years = {
+                "2025": "2026",
+                "2024": "2025",
+                "2023": "2024",
+                "2022": "2023"
+            };
 
-if (message) {
-    const displayYear = season.split("-")[0] === "2025"
-        ? "2026"
-        : season.split("-")[0] === "2024"
-        ? "2025"
-        : season.split("-")[0] === "2023"
-        ? "2024"
-        : season.split("-")[0] === "2022"
-        ? "2023"
-        : "2022";
+            const seasonYear = season.split("-")[0];
+            const displayYear = years[seasonYear] || "2022";
 
-    message.textContent = `LOADING ${displayYear} BRACKET...`;
-}
+            message.textContent = `LOADING ${displayYear} BRACKET...`;
+        }
 
         const duration = 1500 + Math.random() * 1500;
         const startTime = performance.now();
@@ -278,10 +278,17 @@ if (message) {
 
             if (progress < 100) {
                 requestAnimationFrame(update);
-            } else {
-                loadPlayoffSeason(season);
-                screen.classList.add("hidden");
+                return;
             }
+
+            loadPlayoffSeason(season);
+
+            // Let the browser render the bracket before hiding the screen.
+            requestAnimationFrame(function () {
+                if (token === loadToken) {
+                    screen.classList.add("hidden");
+                }
+            });
         }
 
         requestAnimationFrame(update);
@@ -289,7 +296,7 @@ if (message) {
 
     showBracket(yearSelect.value);
 
-    yearSelect.addEventListener("change", function() {
+    yearSelect.addEventListener("change", function () {
         showBracket(this.value);
     });
 });
