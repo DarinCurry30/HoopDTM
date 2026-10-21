@@ -236,6 +236,350 @@
 .games-section tbody tr:hover {
     transform: translateX(5px);
 }
+
+/* NBA FINALS SPECIAL DESIGN */
+body.finals-mode .series-header h1 {
+    font-size: clamp(38px, 6vw, 68px);
+    font-weight: 1000;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+body.finals-mode .series-header p {
+    color: #bd8723;
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+body.finals-mode .series-matchup {
+    border-color: #bd8723;
+    background: linear-gradient(145deg, #191714, #0b0b0f 70%);
+}
+
+body.finals-mode .series-team {
+    font-size: 26px;
+    border-color: #bd8723;
+}
+
+.finals-games {
+    max-width: 1050px;
+    margin: 55px auto 30px;
+    padding: 0 16px;
+}
+
+.finals-games h2 {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 1000;
+    letter-spacing: 2px;
+    margin-bottom: 28px;
+}
+
+.finals-game-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.finals-game-card {
+    aspect-ratio: 1 / 1;
+    min-height: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #bd8723;
+    border-radius: 12px;
+    background: #15151b;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    cursor: pointer;
+    transition: transform .2s ease, background .2s ease;
+}
+
+.finals-game-card:hover:not(:disabled) {
+    transform: translateY(-4px);
+    background: #211d15;
+}
+
+.finals-game-card:disabled {
+    cursor: default;
+    opacity: .65;
+}
+
+.finals-game-label {
+    font-size: 15px;
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.finals-game-circle {
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    border: 2px solid #bd8723;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 19px;
+    font-weight: 1000;
+}
+
+.finals-game-card.is-played .finals-game-circle {
+    background: #bd8723;
+    color: #0b0b0f;
+}
+
+.finals-game-card.is-unplayed .finals-game-circle {
+    color: #888;
+    border-color: #555;
+}
+
+.finals-game-card:nth-child(5) {
+    grid-column: 1;
+    grid-row: 2;
+    transform: none;
+}
+
+.finals-game-card:nth-child(6) {
+    grid-column: 2;
+    grid-row: 2;
+}
+
+.finals-game-card:nth-child(7) {
+    grid-column: 3;
+    grid-row: 2;
+}
+
+/* Center the bottom three cards together */
+.finals-game-card:nth-child(n+5) {
+    position: relative;
+    left: 50%;
+}
+
+@media (max-width: 650px) {
+    .finals-game-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+
+    .finals-game-card:nth-child(n) {
+        grid-column: auto;
+    }
+
+    .finals-game-card:nth-child(7) {
+        grid-column: 1 / -1;
+        width: calc(50% - 9px);
+        justify-self: center;
+    }
+}
+
+
+/* ===== FINALS BOX SCORE REDESIGN ===== */
+
+.boxscore-message {
+    color: #e8e8ee;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Scoreboard */
+.game-summary {
+    margin: 24px 0 32px;
+    padding: 26px 20px;
+    background: linear-gradient(135deg, #1b1b24, #101015);
+    border: 1px solid #34343e;
+    border-top: 3px solid #ff7900;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.game-summary-label {
+    color: #ff7900;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+.game-summary-score {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin: 18px 0;
+}
+
+.game-team {
+    font-size: clamp(22px, 4vw, 34px);
+    font-weight: 800;
+    color: #fff;
+}
+
+.game-score {
+    font-size: clamp(30px, 5vw, 46px);
+    font-weight: 900;
+    color: #fff;
+    font-variant-numeric: tabular-nums;
+}
+
+.game-score-divider {
+    color: #ff7900;
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.game-winner {
+    display: inline-block;
+    padding: 7px 13px;
+    border-radius: 20px;
+    background: #ff790018;
+    border: 1px solid #ff790055;
+    color: #ff963d;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.series-record {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid #34343e;
+}
+
+.series-record-label {
+    color: #9999a8;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.series-record-score {
+    color: #fff;
+    font-size: 22px;
+    font-weight: 900;
+    font-variant-numeric: tabular-nums;
+}
+
+.series-record-score strong {
+    color: #ff7900;
+}
+
+/* Team tables */
+.team-boxscore {
+    margin: 28px 0;
+}
+
+.team-boxscore h2 {
+    margin: 0 0 14px;
+    color: #f3f3f6;
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: .3px;
+}
+
+.boxscore-table-wrap {
+    overflow-x: auto;
+    border: 1px solid #30303a;
+    border-radius: 12px;
+    background: #141419;
+}
+
+.boxscore-table {
+    width: 100%;
+    border-collapse: collapse;
+    white-space: nowrap;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    color: #dedee6;
+}
+
+.boxscore-table th {
+    padding: 13px 12px;
+    background: #202027;
+    color: #aeb0bd;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: .7px;
+    text-align: center;
+    border-bottom: 1px solid #383842;
+}
+
+.boxscore-table th:first-child,
+.boxscore-table td:first-child {
+    text-align: left;
+}
+
+.boxscore-table td {
+    padding: 13px 12px;
+    text-align: center;
+    border-bottom: 1px solid #292931;
+}
+
+.boxscore-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+.boxscore-table tbody tr:hover {
+    background: #ffffff06;
+}
+
+/* Clickable player names */
+.player-name-button {
+    padding: 3px 0;
+    border: none;
+    background: transparent;
+    color: #f0f0f5;
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    cursor: pointer;
+    transition: color .15s ease;
+}
+
+.player-name-button:hover,
+.player-name-button:focus-visible,
+.player-name-button.is-selected {
+    color: #ff7900;
+}
+
+.player-name-button:focus-visible {
+    outline: 2px solid #ff7900;
+    outline-offset: 4px;
+    border-radius: 2px;
+}
+
+.boxscore-table tr:has(.player-name-button.is-selected) {
+    background: #ff790012;
+}
+
+@media (max-width: 600px) {
+    .game-summary {
+        padding: 22px 12px;
+    }
+
+    .game-summary-score {
+        gap: 10px;
+    }
+
+    .boxscore-table {
+        font-size: 12px;
+    }
+
+    .boxscore-table th,
+    .boxscore-table td {
+        padding: 11px 10px;
+    }
+}
+
     </style>
 </head>
 
@@ -308,6 +652,13 @@
 </main>
 
 <div class="series-result" id="series-result"></div>
+
+
+<section class="finals-games" id="finals-games" hidden>
+    <h2>THE ROAD TO THE TITLE</h2>
+    <div class="finals-game-grid" id="finals-game-grid"></div>
+</section>
+
 
 <section class="games-section">
     <h2>Games</h2>
@@ -651,6 +1002,80 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     });
 });
+
+/* FINALS GAME CARDS */
+if (round === "finals") {
+    document.body.classList.add("finals-mode");
+
+    const finalsSection = document.getElementById("finals-games");
+    const gameGrid = document.getElementById("finals-game-grid");
+    const gamesSection = document.querySelector(".games-section");
+
+    // Support the season key in the URL, with a fallback
+    const finals =
+        finalsData?.[season] ??
+        finalsData?.[String(season)] ??
+        Object.values(finalsData || {})[0];
+
+    if (finalsSection && gameGrid && finals) {
+        finalsSection.hidden = false;
+
+        if (gamesSection) gamesSection.hidden = true;
+
+        gameGrid.innerHTML = "";
+
+        for (let gameNumber = 1; gameNumber <= 7; gameNumber++) {
+            const game = finals.games?.[gameNumber];
+
+            const played = Boolean(
+                game &&
+                game.played === true &&
+                game.winner
+            );
+
+            const card = document.createElement("button");
+            card.type = "button";
+            card.className =
+                `finals-game-card ${played ? "is-played" : "is-unplayed"}`;
+
+            card.innerHTML = `
+                <span class="finals-game-label">GAME ${gameNumber}</span>
+                <span class="finals-game-circle">
+                    ${played ? game.winner : "X"}
+                </span>
+                <span class="finals-game-score">
+                    ${played
+                        ? `${game.team1Score} - ${game.team2Score}`
+                        : "NOT PLAYED"}
+                </span>
+            `;
+
+            card.disabled = !played;
+
+            if (played) {
+                card.addEventListener("click", () => {
+                    const params = new URLSearchParams({
+                        season: season,
+                        game: String(gameNumber)
+                    });
+
+                    window.location.href =
+                        `finals-game.html?${params.toString()}`;
+                });
+            }
+
+            gameGrid.appendChild(card);
+        }
+    } else {
+        console.error("Could not render Finals boxes.", {
+            round,
+            season,
+            finals,
+            finalsSection,
+            gameGrid
+        });
+    }
+}
 </script>
 
 </body>

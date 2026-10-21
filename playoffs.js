@@ -199,7 +199,8 @@ setSeries(eastChampion.parentElement, {
     winner: data.east.champion
 });
 
-    /* NBA FINALS */
+    
+/* NBA FINALS */
 const finalsSeries = document.querySelector(".finals-series");
 
 setSeries(finalsSeries, {
@@ -209,6 +210,21 @@ setSeries(finalsSeries, {
         ? data.finals.team1
         : data.finals.team2
 });
+
+// Make the Finals matchup clickable.
+if (finalsSeries) {
+    finalsSeries.style.cursor = "pointer";
+
+    finalsSeries.addEventListener("click", () => {
+        const params = new URLSearchParams({
+            season: season,
+            round: "finals"
+        });
+
+        window.location.href = `series.html?${params.toString()}`;
+    });
+}
+
 
     /* NBA CHAMPION */
 

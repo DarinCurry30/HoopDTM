@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finals Box Score — Hoop DTM</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .finals-boxscore {
+            max-width: 1000px;
+            margin: 55px auto;
+            padding: 24px;
+        }
+
+        .finals-boxscore h1 {
+            text-align: center;
+            font-size: clamp(32px, 5vw, 54px);
+            font-weight: 1000;
+        }
+
+        .finals-boxscore h2 {
+            color: #bd8723;
+            text-align: center;
+            letter-spacing: 3px;
+        }
+
+        .boxscore-message {
+            margin-top: 30px;
+            padding: 28px;
+            text-align: center;
+            background: #15151b;
+            border: 1px solid #bd8723;
+            border-radius: 12px;
+            color: #aaa;
+        }
+
+        .boxscore-back {
+            display: block;
+            width: fit-content;
+            margin: 25px auto;
+            color: white;
+            text-decoration: none;
+            padding: 12px 18px;
+            border: 1px solid #bd8723;
+            border-radius: 8px;
+        }
+        
+/* ===== HOOP DTM FINALS SCOREBOARD POLISH ===== */
+
+.game-summary {
+    width: 100%;
+    box-sizing: border-box;
+    margin: 30px 0 40px;
+    padding: 30px clamp(16px, 4vw, 48px);
+    background:
+        radial-gradient(ellipse at 50% 0%, #ff790018, transparent 65%),
+        linear-gradient(145deg, #1c1c25, #101015);
+    border: 1px solid #34343e;
+    border-top: 3px solid #ff7900;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 14px 40px #00000025;
+}
+
+.game-summary-label {
+    margin-bottom: 28px;
+    color: #ff963d;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.game-summary-score {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(8px, 2vw, 22px);
+    width: 100%;
+    margin: 0 auto 24px;
+}
+
+.game-team {
+    flex: 0 1 auto;
+    white-space: nowrap;
+    color: #f5f5f8;
+    font-size: clamp(20px, 3.5vw, 36px);
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.game-team:first-child,
+.game-team:last-child {
+    text-align: center;
+}
+
+.game-score {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    color: #ffffff;
+    font-size: clamp(28px, 5vw, 48px);
+    font-weight: 900;
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+}
+
+.game-score-divider {
+    display: inline;
+    flex: 0 0 auto;
+    color: #ff7900;
+    font-size: clamp(22px, 3vw, 32px);
+    font-weight: 800;
+}
+
+@media (max-width: 520px) {
+    .game-summary-score {
+        gap: 8px;
+    }
+
+    .game-team {
+        font-size: clamp(17px, 4.5vw, 23px);
+    }
+
+    .game-score {
+        font-size: clamp(25px, 6vw, 32px);
+    }
+
+    .game-score-divider {
+        font-size: 20px;
+    }
+}
+
+/* Compact winner badge */
+.game-winner {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 18px;
+    border: 1px solid #ff790055;
+    border-radius: 999px;
+    background: #ff790015;
+    color: #ff963d;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1.5px;
+}
+
+/* Series record gets its own bottom panel */
+.series-record {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 28px;
+    padding: 20px 24px;
+    background: #ffffff06;
+    border: 1px solid #ffffff10;
+    border-radius: 12px;
+}
+
+.series-record-label {
+    color: #a6a6b5;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.series-record-score {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #f3f3f7;
+    font-size: 18px;
+    font-weight: 800;
+}
+
+.series-record-score strong {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 34px;
+    height: 34px;
+    padding: 0 5px;
+    box-sizing: border-box;
+    border-radius: 9px;
+    background: #ff790018;
+    color: #ff963d;
+    font-size: 20px;
+}
+
+/* Player tables get space below the scoreboard */
+.team-boxscore {
+    margin: 36px 0;
+}
+
+.team-boxscore h2 {
+    margin-bottom: 16px;
+    padding-left: 14px;
+    border-left: 3px solid #ff7900;
+}
+
+/* Mobile layout */
+@media (max-width: 520px) {
+    .game-summary {
+        padding: 24px 16px;
+    }
+
+    .game-summary-label {
+        margin-bottom: 22px;
+        letter-spacing: 2.5px;
+    }
+
+    .game-summary-score {
+        gap: 10px;
+    }
+
+    .game-team {
+        font-size: 23px;
+    }
+
+    .game-score {
+        font-size: 32px;
+    }
+
+    .series-record {
+        justify-content: center;
+        text-align: center;
+        padding: 16px 12px;
+    }
+}
+/* ===== STARTING FIVE HEADING STYLE ===== */
+.team-boxscore h2 {
+    margin: 0 0 16px;
+    padding: 12px 16px;
+    background: linear-gradient(90deg, #ff790018, transparent);
+    border-left: 4px solid #ff7900;
+    border-radius: 0 8px 8px 0;
+
+    color: #ee8223;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 900;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+}
+
+/* Keep the headings readable on smaller screens */
+@media (max-width: 600px) {
+    .team-boxscore h2 {
+        font-size: 17px;
+        padding: 10px 12px;
+    }
+}
+
+/* ===== STARTING FIVE TEAM LINK GLOW ===== */
+.starting-five-team-link {
+    display: inline-block;
+    color: #ff963d;
+    text-decoration: none;
+    font-weight: 900;
+    transition: transform 0.25s ease, color 0.25s ease,
+                text-shadow 0.25s ease;
+}
+
+.starting-five-team-link:hover {
+    color: #ffad66;
+    transform: translateY(-3px);
+    text-shadow:
+        0 0 5px #ff7900,
+        0 0 12px #ff7900,
+        0 0 22px #ff790088;
+}
+
+.starting-five-team-link:focus-visible {
+    outline: 2px solid #ff7900;
+    outline-offset: 4px;
+    border-radius: 3px;
+}
+/* ===== ROUNDED TEAM ABBREVIATION OUTLINE ===== */
+.game-team {
+    display: inline-block;
+    padding: 2px 5px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+    transition: border-color 0.2s ease, color 0.2s ease;
+}
+
+.game-team:hover {
+    border-color: #ff7900;
+    color: #ff963d;
+    /* Thin outline around scoreboard team letters */
+.game-team:hover {
+    -webkit-text-stroke: 0.25px #ff7900;
+}
+}
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">🏀 Hoop DTM</a>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="players.html">Players</a>
+            <a href="teams.html">Teams</a>
+            <a href="leaders.html">Leaders</a>
+            <a href="stats.html">Stats</a>
+            <a href="standings.html">Standings</a>
+            <a href="playoffs.html">Playoffs</a>
+        </div>
+    </nav>
+
+    <main class="finals-boxscore">
+        <h2>NBA FINALS</h2>
+        <h1 id="game-title">GAME</h1>
+
+        <div id="game-summary-container"></div>
+
+<div class="boxscore-message" id="boxscore-message">
+    Loading box score...
+</div>
+
+        <a href="#" class="boxscore-back" id="back-link">
+            ← Back to Finals
+        </a>
+    </main>
+
+    <script src="playoffData.js"></script>
+    <script src="playoffs.js"></script>
+ 
+
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const season = params.get("season") || "2025-26";
+const gameNumber = Number(params.get("game"));
+
+const title = document.getElementById("game-title");
+const message = document.getElementById("boxscore-message");
+const summary = document.getElementById("game-summary-container");
+const backLink = document.getElementById("back-link");
+
+title.textContent = `GAME ${gameNumber || "—"}`;
+
+backLink.href =
+    `series.html?season=${encodeURIComponent(season)}&round=finals`;
+
+const finalsSeason = season === "2025-26" ? "2026" : season;
+const seasonData = finalsData?.[String(finalsSeason)];
+const game = seasonData?.games?.[gameNumber];
+
+if (!game || !game.boxScore) {
+    if (summary) summary.innerHTML = "";
+    message.textContent =
+        `No box score found for ${season}, Game ${gameNumber}.`;
+} else {
+    const wins = {};
+
+    Object.values(seasonData.games || {}).forEach(g => {
+        if (g && g.played && g.winner) {
+            wins[g.winner] = (wins[g.winner] || 0) + 1;
+        }
+    });
+
+    const team1 = game.team1;
+    const team2 = game.team2;
+    const team1Wins = wins[team1] || 0;
+    const team2Wins = wins[team2] || 0;
+
+    // Scoreboard is separate from the player tables.
+    const scoreboard = `
+        <section class="game-summary">
+            <div class="game-summary-label">
+                NBA FINALS · GAME ${gameNumber}
+            </div>
+
+            <div class="game-summary-score">
+                <span class="game-team">${team1}</span>
+                <span class="game-score">${game.team1Score}</span>
+                <span class="game-score-divider">—</span>
+                <span class="game-score">${game.team2Score}</span>
+                <span class="game-team">${team2}</span>
+            </div>
+
+            <div class="game-winner">🏆 ${game.winner} WIN</div>
+
+            <div class="series-record">
+                <span class="series-record-label">NEW SERIES SCORE</span>
+                <span class="series-record-score">
+                    ${team1} <strong>${team1Wins}</strong>
+                    — <strong>${team2Wins}</strong> ${team2}
+                </span>
+            </div>
+        </section>
+    `;
+
+    if (summary) {
+        summary.innerHTML = scoreboard;
+    } else {
+        message.insertAdjacentHTML("beforebegin", scoreboard);
+    }
+
+    // Only player tables go inside the boxscore area.
+    message.innerHTML =
+        renderTeam(team1, game.boxScore[team1]) +
+        renderTeam(team2, game.boxScore[team2]);
+}
+
+function renderTeam(team, players = []) {
+    const teamSlugs = {
+    BOS: "boston-celtics",
+    MIA: "miami-heat",
+    NY: "new-york-knicks",
+    NYK: "new-york-knicks",
+    CLE: "cleveland-cavaliers",
+    OKC: "oklahoma-city-thunder",
+    DEN: "denver-nuggets",
+    LAL: "los-angeles-lakers",
+    MEM: "memphis-grizzlies",
+    SAS: "san-antonio-spurs",
+    SA: "san-antonio-spurs",
+    MIN: "minnesota-timberwolves",
+    HOU: "houston-rockets",
+    LAC: "los-angeles-clippers",
+    MIL: "milwaukee-bucks",
+    PHI: "philadelphia-76ers",
+    IND: "indiana-pacers",
+    ORL: "orlando-magic",
+    GS: "golden-state-warriors",
+    GSW: "golden-state-warriors",
+    SAC: "sacramento-kings",
+    NO: "new-orleans-pelicans",
+    PHX: "phoenix-suns",
+    POR: "portland-trail-blazers",
+    ATL: "atlanta-hawks",
+    TOR: "toronto-raptors",
+    DAL: "dallas-mavericks",
+    UTA: "utah-jazz",
+    BKN: "brooklyn-nets",
+    CHI: "chicago-bulls"
+};
+    if (!players || !players.length) {
+        return `
+            <section class="team-boxscore">
+                <h2>${team}</h2>
+                <p>No player stats entered yet.</p>
+            </section>
+        `;
+    }
+
+    const rows = players.map((player, index) => `
+        <tr>
+            <td>
+                <button type="button"
+                    class="player-name-button"
+                    aria-pressed="false"
+                    data-player-index="${index}">
+                    ${player.name}
+                </button>
+            </td>
+            <td>${player.pos || "—"}</td>
+            <td>${player.pts ?? 0}</td>
+            <td>${player.reb ?? 0}</td>
+            <td>${player.ast ?? 0}</td>
+            <td>${player.stl ?? 0}</td>
+            <td>${player.blk ?? 0}</td>
+            <td>${player.fg || "—"}</td>
+            <td>${player.ft || "—"}</td>
+            <td>${player.f3 || "—"}</td>
+            <td>${player.to ?? 0}</td>
+            <td>${player.pf ?? 0}</td>
+        </tr>
+    `).join("");
+
+    return `
+        <section class="team-boxscore">
+        <h2>
+    <a href="team.html?team=${teamSlugs[team] || team.toLowerCase()}"
+       class="starting-five-team-link">${team}</a>
+    Starting Five
+</h2>
+            <div class="boxscore-table-wrap">
+                <table class="boxscore-table">
+                    <thead>
+                        <tr>
+                            <th>Player</th><th>POS</th><th>PTS</th>
+                            <th>REB</th><th>AST</th><th>STL</th>
+                            <th>BLK</th><th>FG</th><th>FT</th>
+                            <th>3PT</th><th>TO</th><th>PF</th>
+                        </tr>
+                    </thead>
+                    <tbody>${rows}</tbody>
+                </table>
+            </div>
+        </section>
+    `;
+}
+
+// Click a player's name to toggle the orange highlight.
+message.addEventListener("click", event => {
+    const button = event.target.closest(".player-name-button");
+    if (!button) return;
+
+    const selected = button.classList.toggle("is-selected");
+    button.setAttribute("aria-pressed", String(selected));
+});
+</script>
+
+
+
+</body>
+</html>

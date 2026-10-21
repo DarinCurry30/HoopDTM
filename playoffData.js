@@ -891,97 +891,106 @@ const seriesData = {
                     games: [
                         {
                             game: 1,
-                            winner: "OKC",
-                            score: "108-90",
-                            player: "Chet Holmgren", 
-                            pts: "24",
-                            reb: "12",
-                            ast: "1",
+                            winner: "DET",
+                            score: "111-101",
+                            player: "Cade Cunningham", 
+                            pts: "23",
+                            reb: "3",
+                            ast: "7",
                         },
                         {
                             game: 2,
-                            winner: "OKC",
-                            score: "125-107",
-                            player: "Chet Holmgren", 
-                            pts: "22",
-                            reb: "9",
-                            ast: "3",
-                        },
-                        {
-                            game: 3,
-                            winner: "OKC",
-                            score: "131-108",
-                            player: "Ajay Mitchell", 
-                            pts: "24",
-                            reb: "4",
+                            winner: "DET",
+                            score: "107-97",
+                            player: "Cade Cunningham", 
+                            pts: "25",
+                            reb: "3",
                             ast: "10",
                         },
                         {
-                            game: 4,
-                            winner: "OKC",
-                            score: "115-110",
-                            player: "Shai Gilgeous-Alexander", 
+                            game: 3,
+                            winner: "CLE",
+                            score: "116-109",
+                            player: "Donovan Mitchell", 
                             pts: "35",
-                            reb: "1",
+                            reb: "10",
+                            ast: "4",
+                        },
+                        {
+                            game: 4,
+                            winner: "CLE",
+                            score: "112-103",
+                            player: "Donovan Mitchell", 
+                            pts: "43",
+                            reb: "5",
+                            ast: "2",
+                        },
+                        {
+                            game: 5,
+                            winner: "CLE",
+                            score: "117-113",
+                            player: "James Harden", 
+                            pts: "30",
+                            reb: "8",
+                            ast: "6",
+                        },
+                        {
+                            game: 6,
+                            winner: "DET",
+                            score: "115-94",
+                            player: "Cade Cunningham", 
+                            pts: "21",
+                            reb: "2",
                             ast: "8",
-                        }
+                        },
+                        {
+                            game: 7,
+                            winner: "CLE",
+                            score: "125-94",
+                            player: "Donovan Mitchell", 
+                            pts: "26",
+                            reb: "6",
+                            ast: "8",
+                        },
                     ]
                 },
                 1: {
                     games: [
                         {
                             game: 1,
-                            winner: "MIN",
-                            score: "104-102",
-                            player: "Julius Randle", 
-                            pts: "21",
-                            reb: "10",
-                            ast: "2",
+                            winner: "NY",
+                            score: "137-98",
+                            player: "Jalen Brunson", 
+                            pts: "35",
+                            reb: "1",
+                            ast: "3",
                         },
                         {
                             game: 2,
-                            winner: "SA",
-                            score: "133-95",
-                            player: "Stephon Castle", 
-                            pts: "21",
-                            reb: "4",
-                            ast: "4",
+                            winner: "NY",
+                            score: "108-102",
+                            player: "Jalen Brunson", 
+                            pts: "26",
+                            reb: "1",
+                            ast: "6",
                         },
                         {
                             game: 3,
-                            winner: "SA",
-                            score: "115-108",
-                            player: "Victor Wembanyama", 
-                            pts: "39",
-                            reb: "15",
-                            ast: "1",
+                            winner: "NY",
+                            score: "108-94",
+                            player: "Jalen Brunson", 
+                            pts: "33",
+                            reb: "5",
+                            ast: "9",
                         },
                         {
                             game: 4,
-                            winner: "MIN",
-                            score: "114-109",
-                            player: "Anthony Edwards", 
-                            pts: "36",
-                            reb: "6",
-                            ast: "2",
-                        },
-                        {
-                            game: 5,
-                            winner: "SA",
-                            score: "126-97",
-                            player: "Victor Wembanyama", 
-                            pts: "27",
-                            reb: "17",
-                            ast: "5",
-                        },
-                        {
-                            game: 6,
-                            winner: "SA",
-                            score: "139-109",
-                            player: "Stephon Castle", 
-                            pts: "32",
-                            reb: "11",
-                            ast: "6",
+                            winner: "NY",
+                            score: "144-114",
+                            player: "Miles McBride", 
+                            pts: "25",
+                            reb: "4",
+                            ast: "0",
                         }
                     ]
                 },
@@ -992,71 +1001,147 @@ const seriesData = {
                     games: [
                         {
                             game: 1,
-                            winner: "SA",
-                            score: "122-115",
-                            player: "Victor Wembanyama", 
-                            pts: "41",
-                            reb: "24",
-                            ast: "3",
+                            winner: "NY",
+                            score: "115-104",
+                            player: "Jalen Brunson", 
+                            pts: "38",
+                            reb: "5",
+                            ast: "6",
                         },
                         {
                             game: 2,
-                            winner: "OKC",
-                            score: "122-113",
-                            player: "Shai Gilgeous-Alexander", 
-                            pts: "30",
+                            winner: "NY",
+                            score: "109-93",
+                            player: "Josh Hart", 
+                            pts: "26",
                             reb: "4",
-                            ast: "9",
+                            ast: "7",
                         },
                         {
                             game: 3,
-                            winner: "OKC",
-                            score: "123-108",
-                            player: "Shai Gilgeous-Alexander", 
-                            pts: "26",
-                            reb: "2",
-                            ast: "12",
+                            winner: "NY",
+                            score: "121-108",
+                            player: "Jalen Brunson", 
+                            pts: "30",
+                            reb: "3",
+                            ast: "6",
                         },
                         {
                             game: 4,
-                            winner: "SA",
-                            score: "103-82",
-                            player: "Victor Wembanyama", 
-                            pts: "33",
-                            reb: "8",
-                            ast: "5",
+                            winner: "NY",
+                            score: "130-93",
+                            player: "Karl Anthony Towns", 
+                            pts: "19",
+                            reb: "14",
+                            ast: "3",
                         },
-                        {
-                            game: 5,
-                            winner: "OKC",
-                            score: "127-114",
-                            player: "Shai Gilgeous-Alexander",
-                            pts: "32",
-                            reb: "2",
-                            ast: "9",
-                        },
-                        {
-                            game: 6,
-                            winner: "SA",
-                            score: "118-91",
-                            player: "Victor Wembanyama", 
-                            pts: "28",
-                            reb: "10",
-                            ast: "2",
-                        },
-                        {
-                            game: 7,
-                            winner: "SA",
-                            score: "111-103",
-                            player: "Victor Wembanyama", 
-                            pts: "22",
-                            reb: "7",
-                            ast: "2",
-                        },
-                        
                     ]
                 },
             }
+        }
+    }
+};
+const finalsData = {
+    "2026": {
+        games: {
+            1: {
+                played: true,
+
+                team1: "SA",
+                team2: "NY",
+
+                team1Score: 108,
+                team2Score: 101,
+
+                winner: "SA",
+
+                featuredPlayer: "Marcus Reed",
+
+                boxScore: {
+                    SA: [
+                        {
+                            name: "Marcus Reed",
+                            pos: "PG",
+                            pts: 32, reb: 9, ast: 7, stl: 2, blk: 1,
+                            fg: "12-21", ft: "5-6", f3: "3-7",
+                            to: 3, pf: 2
+                        },
+                        {
+                            name: "Darius Cole",
+                            pos: "SG",
+                            pts: 21, reb: 4, ast: 5, stl: 1, blk: 0,
+                            fg: "8-16", ft: "2-2", f3: "3-6",
+                            to: 2, pf: 3
+                        },
+                        {
+                            name: "Andre Brooks",
+                            pos: "SF",
+                            pts: 16, reb: 7, ast: 2, stl: 1, blk: 1,
+                            fg: "6-11", ft: "2-2", f3: "2-4",
+                            to: 1, pf: 2
+                        },
+                        {
+                            name: "Victor Hayes",
+                            pos: "PF",
+                            pts: 15, reb: 10, ast: 3, stl: 0, blk: 2,
+                            fg: "6-12", ft: "1-2", f3: "2-5",
+                            to: 2, pf: 4
+                        },
+                        {
+                            name: "Malik Stone",
+                            pos: "C",
+                            pts: 12, reb: 11, ast: 2, stl: 0, blk: 3,
+                            fg: "5-8", ft: "2-4", f3: "0-0",
+                            to: 1, pf: 3
+                        }
+                    ],
+
+                    NY: [
+                        {
+                            name: "Jordan Price",
+                            pos: "PG",
+                            pts: 24, reb: 3, ast: 8, stl: 1, blk: 0,
+                            fg: "9-19", ft: "4-5", f3: "2-6",
+                            to: 4, pf: 2
+                        },
+                        {
+                            name: "Cameron Ellis",
+                            pos: "SG",
+                            pts: 19, reb: 5, ast: 3, stl: 2, blk: 0,
+                            fg: "7-15", ft: "3-4", f3: "2-5",
+                            to: 2, pf: 3
+                        },
+                        {
+                            name: "Trey Morgan",
+                            pos: "SF",
+                            pts: 18, reb: 8, ast: 2, stl: 0, blk: 1,
+                            fg: "7-14", ft: "2-2", f3: "2-5",
+                            to: 2, pf: 4
+                        },
+                        {
+                            name: "Ethan Ward",
+                            pos: "PF",
+                            pts: 14, reb: 9, ast: 3, stl: 1, blk: 1,
+                            fg: "6-12", ft: "1-2", f3: "1-3",
+                            to: 3, pf: 3
+                        },
+                        {
+                            name: "Noah Bennett",
+                            pos: "C",
+                            pts: 10, reb: 12, ast: 1, stl: 0, blk: 2,
+                            fg: "4-7", ft: "2-4", f3: "0-0",
+                            to: 2, pf: 4
+                        }
+                    ]
+                }
+            },
+
+            2: null,
+            3: null,
+            4: null,
+            5: null,
+            6: null,
+            7: null
         }
     }
 };
