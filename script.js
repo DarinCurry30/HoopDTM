@@ -5357,15 +5357,24 @@ career: {
 function loadPlayer() {
 
     const params = new URLSearchParams(window.location.search);
+const playerSlug = params.get("player");
 
-    const playerID = params.get("player");
+const player = players[playerSlug];
 
-    const player = players[playerID];
+if (!player) {
+    const playerName = playerSlug
+        ? playerSlug
+            .split("-")
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(" ")
+        : "Player";
 
-    if (!player) {
-        console.log("Player not found:", playerID);
-        return;
-    }
+    document.getElementById("playerName").textContent = playerName;
+    document.getElementById("playerInitials").textContent =
+        playerName.split(" ").map(word => word[0]).join("");
+
+    return;
+}
 
     // Player information
     document.getElementById("playerName").textContent =

@@ -7,6 +7,20 @@
     <title>Finals Box Score — Hoop DTM</title>
     <link rel="stylesheet" href="style.css">
     <style>
+        .winner-team {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.winner-team:hover {
+    transform: scale(1.15);
+    color: #ff963d;
+}
         .finals-boxscore {
             max-width: 1000px;
             margin: 55px auto;
@@ -281,22 +295,28 @@
     outline-offset: 4px;
     border-radius: 3px;
 }
-/* ===== ROUNDED TEAM ABBREVIATION OUTLINE ===== */
+/* ===== SCOREBOARD TEAM TEXT OUTLINE ===== */
 .game-team {
     display: inline-block;
-    padding: 2px 5px;
-    border: 1px solid transparent;
-    border-radius: 50%;
-    transition: border-color 0.2s ease, color 0.2s ease;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    transition: color 0.2s ease, -webkit-text-stroke 0.2s ease;
 }
 
 .game-team:hover {
-    border-color: #ff7900;
-    color: #ff963d;
-    /* Thin outline around scoreboard team letters */
-.game-team:hover {
-    -webkit-text-stroke: 0.25px #ff7900;
+    color: #ffb16c;
+    cursor: pointer;
+    -webkit-text-stroke: 0.25px #eeebeb;
 }
+.zzbed {
+    display: inline-block;
+    cursor: pointer;
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.zzbed:hover {
+    transform: scale(1.15);
 }
     </style>
 </head>
@@ -335,6 +355,38 @@
 
 
 <script>
+const teamSlugs = {
+    BOS: "boston-celtics",
+    MIA: "miami-heat",
+    NY: "new-york-knicks",
+    NYK: "new-york-knicks",
+    CLE: "cleveland-cavaliers",
+    OKC: "oklahoma-city-thunder",
+    DEN: "denver-nuggets",
+    LAL: "los-angeles-lakers",
+    MEM: "memphis-grizzlies",
+    SAS: "san-antonio-spurs",
+    SA: "san-antonio-spurs",
+    MIN: "minnesota-timberwolves",
+    HOU: "houston-rockets",
+    LAC: "los-angeles-clippers",
+    MIL: "milwaukee-bucks",
+    PHI: "philadelphia-76ers",
+    IND: "indiana-pacers",
+    ORL: "orlando-magic",
+    GS: "golden-state-warriors",
+    GSW: "golden-state-warriors",
+    SAC: "sacramento-kings",
+    NO: "new-orleans-pelicans",
+    PHX: "phoenix-suns",
+    POR: "portland-trail-blazers",
+    ATL: "atlanta-hawks",
+    TOR: "toronto-raptors",
+    DAL: "dallas-mavericks",
+    UTA: "utah-jazz",
+    BKN: "brooklyn-nets",
+    CHI: "chicago-bulls"
+}
 const params = new URLSearchParams(window.location.search);
 const season = params.get("season") || "2025-26";
 const gameNumber = Number(params.get("game"));
@@ -386,13 +438,15 @@ if (!game || !game.boxScore) {
                 <span class="game-team">${team2}</span>
             </div>
 
-            <div class="game-winner">🏆 ${game.winner} WIN</div>
-
+<div class="game-winner">
+    🏆 <a href="team.html?team=${teamSlugs[game.winner]}"
+         class="winner-team">${game.winner}</a> WINS
+</div>
             <div class="series-record">
                 <span class="series-record-label">NEW SERIES SCORE</span>
                 <span class="series-record-score">
-                    ${team1} <strong>${team1Wins}</strong>
-                    — <strong>${team2Wins}</strong> ${team2}
+                    <span class="zzbed">${team1}</span><strong>${team1Wins}</strong>
+                    — <strong>${team2Wins}</strong> <span class="zzbed">${team2}</span>
                 </span>
             </div>
         </section>
@@ -409,41 +463,8 @@ if (!game || !game.boxScore) {
         renderTeam(team1, game.boxScore[team1]) +
         renderTeam(team2, game.boxScore[team2]);
 }
-
 function renderTeam(team, players = []) {
-    const teamSlugs = {
-    BOS: "boston-celtics",
-    MIA: "miami-heat",
-    NY: "new-york-knicks",
-    NYK: "new-york-knicks",
-    CLE: "cleveland-cavaliers",
-    OKC: "oklahoma-city-thunder",
-    DEN: "denver-nuggets",
-    LAL: "los-angeles-lakers",
-    MEM: "memphis-grizzlies",
-    SAS: "san-antonio-spurs",
-    SA: "san-antonio-spurs",
-    MIN: "minnesota-timberwolves",
-    HOU: "houston-rockets",
-    LAC: "los-angeles-clippers",
-    MIL: "milwaukee-bucks",
-    PHI: "philadelphia-76ers",
-    IND: "indiana-pacers",
-    ORL: "orlando-magic",
-    GS: "golden-state-warriors",
-    GSW: "golden-state-warriors",
-    SAC: "sacramento-kings",
-    NO: "new-orleans-pelicans",
-    PHX: "phoenix-suns",
-    POR: "portland-trail-blazers",
-    ATL: "atlanta-hawks",
-    TOR: "toronto-raptors",
-    DAL: "dallas-mavericks",
-    UTA: "utah-jazz",
-    BKN: "brooklyn-nets",
-    CHI: "chicago-bulls"
-};
-    if (!players || !players.length) {
+        if (!players || !players.length) {
         return `
             <section class="team-boxscore">
                 <h2>${team}</h2>
