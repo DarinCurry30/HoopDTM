@@ -1047,89 +1047,89 @@ const finalsData = {
             1: {
                 played: true,
 
-                team1: "SA",
-                team2: "NY",
+                home: "SA",
+                away: "NY",
 
-                team1Score: 108,
-                team2Score: 101,
+                homeScore: 95,
+                awayScore: 105,
 
-                winner: "SA",
+                winner: "NY",
 
                 featuredPlayer: "Marcus Reed",
 
                 boxScore: {
                     SA: [
                         {
-                            name: "Marcus Reed",
+                            name: "De'Aaron Fox",
                             pos: "PG",
-                            pts: 32, reb: 9, ast: 7, stl: 2, blk: 1,
-                            fg: "12-21", ft: "5-6", f3: "3-7",
-                            to: 3, pf: 2
+                            pts: 7, reb: 4, ast: 5, stl: 1, blk: 0,
+                            fg: "3-13", ft: "1-2", f3: "0-4",
+                            to: 3, pf: 5
                         },
                         {
-                            name: "Darius Cole",
+                            name: "Stephon Castle",
                             pos: "SG",
-                            pts: 21, reb: 4, ast: 5, stl: 1, blk: 0,
-                            fg: "8-16", ft: "2-2", f3: "3-6",
+                            pts: 17, reb: 8, ast: 3, stl: 0, blk: 0,
+                            fg: "7-16", ft: "2-2", f3: "1-5",
                             to: 2, pf: 3
                         },
                         {
-                            name: "Andre Brooks",
+                            name: "Devin Vassell",
                             pos: "SF",
-                            pts: 16, reb: 7, ast: 2, stl: 1, blk: 1,
-                            fg: "6-11", ft: "2-2", f3: "2-4",
-                            to: 1, pf: 2
+                            pts: 9, reb: 9, ast: 3, stl: 0, blk: 0,
+                            fg: "4-11", ft: "0-0", f3: "1-6",
+                            to: 1, pf: 1
                         },
                         {
-                            name: "Victor Hayes",
+                            name: "Julian Champagnie",
                             pos: "PF",
-                            pts: 15, reb: 10, ast: 3, stl: 0, blk: 2,
-                            fg: "6-12", ft: "1-2", f3: "2-5",
-                            to: 2, pf: 4
+                            pts: 16, reb: 10, ast: 1, stl: 0, blk: 1,
+                            fg: "5-11", ft: "1-2", f3: "5-10",
+                            to: 0, pf: 2
                         },
                         {
-                            name: "Malik Stone",
+                            name: "Victor Wembanyama",
                             pos: "C",
-                            pts: 12, reb: 11, ast: 2, stl: 0, blk: 3,
-                            fg: "5-8", ft: "2-4", f3: "0-0",
-                            to: 1, pf: 3
+                            pts: 26, reb: 12, ast: 2, stl: 1, blk: 3,
+                            fg: "6-21", ft: "12-13", f3: "2-9",
+                            to: 6, pf: 2
                         }
                     ],
 
                     NY: [
                         {
-                            name: "Jordan Price",
+                            name: "Jalen Brunson",
                             pos: "PG",
-                            pts: 24, reb: 3, ast: 8, stl: 1, blk: 0,
-                            fg: "9-19", ft: "4-5", f3: "2-6",
+                            pts: 30, reb: 3, ast: 2, stl: 0, blk: 0,
+                            fg: "12-31", ft: "4-4", f3: "2-9",
                             to: 4, pf: 2
                         },
                         {
-                            name: "Cameron Ellis",
+                            name: "Mikal Bridges",
                             pos: "SG",
-                            pts: 19, reb: 5, ast: 3, stl: 2, blk: 0,
-                            fg: "7-15", ft: "3-4", f3: "2-5",
-                            to: 2, pf: 3
+                            pts: 9, reb: 3, ast: 3, stl: 2, blk: 0,
+                            fg: "3-6", ft: "3-4", f3: "0-0",
+                            to: 1, pf: 3
                         },
                         {
-                            name: "Trey Morgan",
+                            name: "Josh Hart",
                             pos: "SF",
-                            pts: 18, reb: 8, ast: 2, stl: 0, blk: 1,
-                            fg: "7-14", ft: "2-2", f3: "2-5",
-                            to: 2, pf: 4
+                            pts: 3, reb: 15, ast: 6, stl: 4, blk: 1,
+                            fg: "1-5", ft: "1-1", f3: "0-3",
+                            to: 0, pf: 4
                         },
                         {
-                            name: "Ethan Ward",
+                            name: "OG Anunoby",
                             pos: "PF",
-                            pts: 14, reb: 9, ast: 3, stl: 1, blk: 1,
+                            pts: 17, reb: 3, ast: 0, stl: 1, blk: 1,
                             fg: "6-12", ft: "1-2", f3: "1-3",
-                            to: 3, pf: 3
+                            to: 0, pf: 0
                         },
                         {
-                            name: "Noah Bennett",
+                            name: "Karl-Anthony Towns",
                             pos: "C",
-                            pts: 10, reb: 12, ast: 1, stl: 0, blk: 2,
-                            fg: "4-7", ft: "2-4", f3: "0-0",
+                            pts: 18, reb: 12, ast: 4, stl: 0, blk: 1,
+                            fg: "7-15", ft: "4-4", f3: "0-2",
                             to: 2, pf: 4
                         }
                     ]

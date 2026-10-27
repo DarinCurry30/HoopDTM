@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="style.css">
 
     <style>
+        .finals-game-score strong {
+    font-weight: 900;
+}
         .series-page,
 .games-section {
     font-family: inherit;
@@ -1024,49 +1027,84 @@ if (round === "finals") {
 
         gameGrid.innerHTML = "";
 
-        for (let gameNumber = 1; gameNumber <= 7; gameNumber++) {
-            const game = finals.games?.[gameNumber];
+        
+for (let gameNumber = 1; gameNumber <= 7; gameNumber++) {
+    const game = finals.games?.[gameNumber];
 
-            const played = Boolean(
-                game &&
-                game.played === true &&
-                game.winner
-            );
+    const played = Boolean(
+        game &&
+        game.played === true &&
+        game.winner
+    );
 
-            const card = document.createElement("button");
-            card.type = "button";
-            card.className =
-                `finals-game-card ${played ? "is-played" : "is-unplayed"}`;
+    const card = document.createElement("button");
+    card.type = "button";
 
-            card.innerHTML = `
-                <span class="finals-game-label">GAME ${gameNumber}</span>
-                <span class="finals-game-circle">
-                    ${played ? game.winner : "X"}
-                </span>
-                <span class="finals-game-score">
-                    ${played
-                        ? `${game.team1Score} - ${game.team2Score}`
-                        : "NOT PLAYED"}
-                </span>
-            `;
+    card.className =
+        `finals-game-card ${played ? "is-played" : "is-unplayed"}`;
 
-            card.disabled = !played;
+    let scoreDisplay = "NOT PLAYED";
 
-            if (played) {
-                card.addEventListener("click", () => {
-                    const params = new URLSearchParams({
-                        season: season,
-                        game: String(gameNumber)
-                    });
+    if (played) {
+        const homeScore = Number(game.homeScore);
+        const awayScore = Number(game.awayScore);
 
-                    window.location.href =
-                        `finals-game.html?${params.toString()}`;
-                });
+        if (Number.isFinite(homeScore) && Number.isFinite(awayScore)) {
+            const homeFirst = homeScore >= awayScore;
+
+const firstScore = homeFirst ? homeScore : awayScore;
+const secondScore = homeFirst ? awayScore : homeScore;
+
+const firstTeam = homeFirst
+    ? (game.home || game.homeTeam || game.team1 || "HOME")
+    : (game.away || game.awayTeam || game.team2 || "AWAY");
+
+const secondTeam = homeFirst
+    ? (game.away || game.awayTeam || game.team2 || "AWAY")
+    : (game.home || game.homeTeam || game.team1 || "HOME");
+
+            scoreDisplay = `<strong>${firstTeam}</strong> ${firstScore} - ${secondScore} <strong>${secondTeam}</strong>`;
+        } else {
+            // Fallback for games that still use the old score properties
+            const score1 = Number(game.team1Score);
+            const score2 = Number(game.team2Score);
+
+            if (Number.isFinite(score1) && Number.isFinite(score2)) {
+                scoreDisplay =
+                    `${Math.max(score1, score2)} - ${Math.min(score1, score2)}`;
+            } else {
+                scoreDisplay = "SCORE UNAVAILABLE";
             }
-
-            gameGrid.appendChild(card);
         }
-    } else {
+    }
+
+    card.innerHTML = `
+        <span class="finals-game-label">GAME ${gameNumber}</span>
+        <span class="finals-game-circle">
+            ${played ? game.winner : "X"}
+        </span>
+        <span class="finals-game-score">
+            ${scoreDisplay}
+        </span>
+    `;
+
+    card.disabled = !played;
+
+    if (played) {
+        card.addEventListener("click", () => {
+            const params = new URLSearchParams({
+                season: season,
+                game: String(gameNumber)
+            });
+
+            window.location.href =
+                `finals-game.html?${params.toString()}`;
+        });
+    }
+
+    gameGrid.appendChild(card);
+}
+} else {
         console.error("Could not render Finals boxes.", {
             round,
             season,

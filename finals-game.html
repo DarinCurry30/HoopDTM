@@ -7,7 +7,8 @@
     <title>Finals Box Score — Hoop DTM</title>
     <link rel="stylesheet" href="style.css">
     <style>
-        .winner-team {
+    
+    .winner-team {    
     display: inline-block;
     cursor: pointer;
     text-decoration: none;
@@ -15,6 +16,44 @@
     font-size: inherit;
     font-weight: inherit;
     transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.game-team-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 0 1 auto;
+}
+
+.game-team-block .game-team {
+    display: inline-block;
+    flex: initial;
+    white-space: nowrap;
+    color: #f5f5f8;
+    font-size: clamp(20px, 3.5vw, 36px);
+    font-weight: 900;
+    letter-spacing: 1px;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    transition: color 0.2s ease, -webkit-text-stroke 0.2s ease;
+}
+
+.home-away-label {
+    margin-top: 4px;
+    color: #a6a6b5;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.home-away-label {
+    margin-top: 4px;
+    color: #a6a6b5;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 2px;
 }
 
 .winner-team:hover {
@@ -86,11 +125,15 @@
     text-transform: uppercase;
 }
 
+.game-team-block {
+    transform: translateY(12px);
+}
+
 .game-summary-score {
     display: flex;
     flex-direction: row;
     flex-wrap: nowrap;
-    align-items: center;
+    align-items: center; /* centers team blocks with the score */
     justify-content: center;
     gap: clamp(8px, 2vw, 22px);
     width: 100%;
@@ -104,6 +147,13 @@
     font-size: clamp(20px, 3.5vw, 36px);
     font-weight: 900;
     letter-spacing: 1px;
+
+    display: inline-block;
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    text-decoration: none;
+    transition: color 0.2s ease, -webkit-text-stroke 0.2s ease;
 }
 
 .game-team:first-child,
@@ -132,10 +182,6 @@
 @media (max-width: 520px) {
     .game-summary-score {
         gap: 8px;
-    }
-
-    .game-team {
-        font-size: clamp(17px, 4.5vw, 23px);
     }
 
     .game-score {
@@ -175,6 +221,28 @@
     background: #ffffff06;
     border: 1px solid #ffffff10;
     border-radius: 12px;
+}
+
+.player-name-button {
+    display: inline-block;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #f5f5f8;
+    font: inherit;
+    font-weight: 700;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.player-name-button:hover {
+    color: #ff963d;
+    transform: translateX(3px);
+    text-decoration: underline;
+    text-decoration-color: #ff7900;
+    text-underline-offset: 4px;
 }
 
 .series-record-label {
@@ -231,10 +299,6 @@
 
     .game-summary-score {
         gap: 10px;
-    }
-
-    .game-team {
-        font-size: 23px;
     }
 
     .game-score {
@@ -305,19 +369,28 @@
 }
 
 .game-team:hover {
-    color: #ffb16c;
+    color: #fffdfc;
     cursor: pointer;
-    -webkit-text-stroke: 0.25px #eeebeb;
+    -webkit-text-stroke: 1.75px #e07c1f;
 }
 .zzbed {
     display: inline-block;
     cursor: pointer;
+    text-decoration: none;
+    color: inherit;
     transition: transform 0.25s ease, color 0.25s ease;
 }
 
 .zzbed:hover {
     transform: scale(1.15);
+    color: #ff963d;
 }
+
+table th,
+table td {
+    cursor: default;
+}
+
     </style>
 </head>
 <body>
@@ -418,11 +491,23 @@ if (!game || !game.boxScore) {
         }
     });
 
-    const team1 = game.team1;
-    const team2 = game.team2;
-    const team1Wins = wins[team1] || 0;
-    const team2Wins = wins[team2] || 0;
-
+    const home = game.home;
+    const away = game.away;
+    const homeWins = wins[home] || 0;
+    const awayWins = wins[away] || 0;
+const seriesLeaderFirst = homeWins >= awayWins
+    ? {
+        firstTeam: home,
+        firstWins: homeWins,
+        secondTeam: away,
+        secondWins: awayWins
+    }
+    : {
+        firstTeam: away,
+        firstWins: awayWins,
+        secondTeam: home,
+        secondWins: homeWins
+    };
     // Scoreboard is separate from the player tables.
     const scoreboard = `
         <section class="game-summary">
@@ -431,24 +516,36 @@ if (!game || !game.boxScore) {
             </div>
 
             <div class="game-summary-score">
-                <span class="game-team">${team1}</span>
-                <span class="game-score">${game.team1Score}</span>
-                <span class="game-score-divider">—</span>
-                <span class="game-score">${game.team2Score}</span>
-                <span class="game-team">${team2}</span>
-            </div>
+    <div class="game-team-block">
+    <a href="team.html?team=${teamSlugs[home]}" class="game-team">${home}</a>
+    <span class="home-away-label">HOME</span>
+</div>
+
+<span class="game-score">${game.homeScore}</span>
+<span class="game-score-divider">—</span>
+<span class="game-score">${game.awayScore}</span>
+
+<div class="game-team-block">
+    <a href="team.html?team=${teamSlugs[away]}" class="game-team">${away}</a>
+    <span class="home-away-label">AWAY</span>
+</div>
+</div>
 
 <div class="game-winner">
     🏆 <a href="team.html?team=${teamSlugs[game.winner]}"
          class="winner-team">${game.winner}</a> WINS
 </div>
-            <div class="series-record">
-                <span class="series-record-label">NEW SERIES SCORE</span>
-                <span class="series-record-score">
-                    <span class="zzbed">${team1}</span><strong>${team1Wins}</strong>
-                    — <strong>${team2Wins}</strong> <span class="zzbed">${team2}</span>
-                </span>
-            </div>
+
+
+<div class="series-record">
+    <span class="series-record-label">NEW SERIES SCORE</span>
+    <span class="series-record-score">
+        <a href="team.html?team=${teamSlugs[seriesLeaderFirst.firstTeam]}" class="zzbed">${seriesLeaderFirst.firstTeam}</a>
+        <strong>${seriesLeaderFirst.firstWins}</strong>
+        — <strong>${seriesLeaderFirst.secondWins}</strong>
+        <a href="team.html?team=${teamSlugs[seriesLeaderFirst.secondTeam]}" class="zzbed">${seriesLeaderFirst.secondTeam}</a>
+    </span>
+</div>
         </section>
     `;
 
@@ -460,8 +557,8 @@ if (!game || !game.boxScore) {
 
     // Only player tables go inside the boxscore area.
     message.innerHTML =
-        renderTeam(team1, game.boxScore[team1]) +
-        renderTeam(team2, game.boxScore[team2]);
+        renderTeam(home, game.boxScore[home]) +
+        renderTeam(away, game.boxScore[away]);
 }
 function renderTeam(team, players = []) {
         if (!players || !players.length) {
@@ -476,12 +573,12 @@ function renderTeam(team, players = []) {
     const rows = players.map((player, index) => `
         <tr>
             <td>
-                <button type="button"
-                    class="player-name-button"
-                    aria-pressed="false"
-                    data-player-index="${index}">
-                    ${player.name}
-                </button>
+                <a
+    href="player.html?player=${player.slug || player.name.toLowerCase().replace(/\s+/g, '-')}"
+    class="player-name-button"
+>
+    ${player.name}
+</a>
             </td>
             <td>${player.pos || "—"}</td>
             <td>${player.pts ?? 0}</td>
@@ -520,15 +617,6 @@ function renderTeam(team, players = []) {
         </section>
     `;
 }
-
-// Click a player's name to toggle the orange highlight.
-message.addEventListener("click", event => {
-    const button = event.target.closest(".player-name-button");
-    if (!button) return;
-
-    const selected = button.classList.toggle("is-selected");
-    button.setAttribute("aria-pressed", String(selected));
-});
 </script>
 
 
