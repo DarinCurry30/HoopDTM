@@ -1055,7 +1055,7 @@ const finalsData = {
 
                 winner: "NY",
 
-                featuredPlayer: "Marcus Reed",
+                featuredPlayer: "Jalen Brunson",
 
                 boxScore: {
                     SA: [
@@ -1136,6 +1136,140 @@ const finalsData = {
                 }
             },
 
+            2: {
+                played: true,
+
+                home: "SA",
+                away: "NY",
+
+                homeScore: 104,
+                awayScore: 105,
+
+                winner: "NY",
+
+                featuredPlayer: "Karl-Anthony Towns",
+
+                boxScore: {
+                    SA: [
+                        {
+                            name: "De'Aaron Fox",
+                            pos: "PG",
+                            pts: 20, reb: 3, ast: 5, stl: 1, blk: 1,
+                            fg: "8-12", ft: "2-2", f3: "2-2",
+                            to: 4, pf: 2
+                        },
+                        {
+                            name: "Stephon Castle",
+                            pos: "SG",
+                            pts: 14, reb: 4, ast: 4, stl: 1, blk: 0,
+                            fg: "5-14", ft: "2-4", f3: "2-4",
+                            to: 4, pf: 4
+                        },
+                        {
+                            name: "Devin Vassell",
+                            pos: "SF",
+                            pts: 14, reb: 9, ast: 5, stl: 0, blk: 1,
+                            fg: "4-9", ft: "3-3", f3: "3-7",
+                            to: 0, pf: 2
+                        },
+                        {
+                            name: "Julian Champagnie",
+                            pos: "PF",
+                            pts: 8, reb: 4, ast: 1, stl: 0, blk: 1,
+                            fg: "2-6", ft: "2-2", f3: "2-5",
+                            to: 0, pf: 2
+                        },
+                        {
+                            name: "Victor Wembanyama",
+                            pos: "C",
+                            pts: 29, reb: 9, ast: 2, stl: 2, blk: 4,
+                            fg: "11-21", ft: "5-8", f3: "2-6",
+                            to: 4, pf: 2
+                        }
+                    ],
+
+                    NY: [
+                        {
+                            name: "Jalen Brunson",
+                            pos: "PG",
+                            pts: 20, reb: 5, ast: 6, stl: 5, blk: 0,
+                            fg: "7-25", ft: "4-5", f3: "2-8",
+                            to: 4, pf: 2
+                        },
+                        {
+                            name: "Mikal Bridges",
+                            pos: "SG",
+                            pts: 20, reb: 6, ast: 6, stl: 1, blk: 0,
+                            fg: "8-13", ft: "0-0", f3: "4-6",
+                            to: 1, pf: 2
+                        },
+                        {
+                            name: "Josh Hart",
+                            pos: "SF",
+                            pts: 0, reb: 6, ast: 4, stl: 1, blk: 1,
+                            fg: "0-4", ft: "0-0", f3: "0-2",
+                            to: 2, pf: 5
+                        },
+                        {
+                            name: "OG Anunoby",
+                            pos: "PF",
+                            pts: 17, reb: 4, ast: 3, stl: 2, blk: 2,
+                            fg: "5-10", ft: "5-5", f3: "2-5",
+                            to: 0, pf: 4
+                        },
+                        {
+                            name: "Karl-Anthony Towns",
+                            pos: "C",
+                            pts: 21, reb: 13, ast: 4, stl: 1, blk: 1,
+                            fg: "8-12", ft: "2-2", f3: "3-5",
+                            to: 2, pf: 5
+                        }
+                    ]
+                }
+            },
+            3: null,
+            4: null,
+            5: null,
+            6: null,
+            7: null
+        }
+    },
+    "2025": {
+        games: {
+            1: null,
+            2: null,
+            3: null,
+            4: null,
+            5: null,
+            6: null,
+            7: null
+        }
+    },
+    "2024": {
+        games: {
+            1: null,
+            2: null,
+            3: null,
+            4: null,
+            5: null,
+            6: null,
+            7: null
+        }
+    },
+    "2023": {
+        games: {
+            1: null,
+            2: null,
+            3: null,
+            4: null,
+            5: null,
+            6: null,
+            7: null
+        }
+    },
+    "2022": {
+        games: {
+            1: null,
             2: null,
             3: null,
             4: null,

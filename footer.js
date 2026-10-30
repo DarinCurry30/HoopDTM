@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             
 <div class="footer-social">
-    <span>FOLLOW HOOP DTM</span>
+    <span>FOLLOW HOOP DTM:</span>
 
     <a href="#" aria-label="YouTube" title="YouTube">
         <svg viewBox="0 0 24 24" aria-hidden="true">

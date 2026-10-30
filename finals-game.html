@@ -391,6 +391,39 @@ table td {
     cursor: default;
 }
 
+/* ===== BOXSCORE COLUMN ALIGNMENT ===== */
+
+/* Center every column except the player-name column */
+.boxscore-table th:not(:first-child),
+.boxscore-table td:not(:first-child) {
+    text-align: center;
+}
+
+/* Keep player names left-aligned */
+.boxscore-table th:first-child,
+.boxscore-table td:first-child {
+    text-align: left;
+}
+.zzbed2 {
+    display: inline-block;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.25s ease, color 0.25s ease;
+}
+
+.zzbed2:hover {
+    transform: scale(1.15);
+    color: #ff963d;
+}
+.series-record .zzbed2 {
+    display: flex;
+    justify-content: center;
+    flex: 0 0 auto;
+    width: 230px;
+    text-align: center;
+    transform: translateX(30px);
+}
     </style>
 </head>
 <body>
@@ -477,11 +510,19 @@ backLink.href =
 const finalsSeason = season === "2025-26" ? "2026" : season;
 const seasonData = finalsData?.[String(finalsSeason)];
 const game = seasonData?.games?.[gameNumber];
+console.log("Season from URL:", season);
+console.log("Season key being used:", finalsSeason);
+console.log("Season data:", seasonData);
+console.log("Game being loaded:", game);
+
+const displaySeason = season.includes("-")
+    ? "20" + season.split("-")[1]
+    : season;
 
 if (!game || !game.boxScore) {
     if (summary) summary.innerHTML = "";
     message.textContent =
-        `No box score found for ${season}, Game ${gameNumber}.`;
+        `No box score found for Game ${gameNumber} of the ${displaySeason} Finals.`;
 } else {
     const wins = {};
 
@@ -541,9 +582,20 @@ const seriesLeaderFirst = homeWins >= awayWins
     <span class="series-record-label">NEW SERIES SCORE</span>
     <span class="series-record-score">
         <a href="team.html?team=${teamSlugs[seriesLeaderFirst.firstTeam]}" class="zzbed">${seriesLeaderFirst.firstTeam}</a>
-        <strong>${seriesLeaderFirst.firstWins}</strong>
-        — <strong>${seriesLeaderFirst.secondWins}</strong>
+        <strong>${Object.entries(seasonData.games || {}).filter(([number, g]) => Number(number) <= gameNumber && g?.played && g.winner === seriesLeaderFirst.firstTeam).length}</strong>
+        — <strong>${Object.entries(seasonData.games || {}).filter(([number, g]) => Number(number) <= gameNumber && g?.played && g.winner === seriesLeaderFirst.secondTeam).length}</strong>
         <a href="team.html?team=${teamSlugs[seriesLeaderFirst.secondTeam]}" class="zzbed">${seriesLeaderFirst.secondTeam}</a>
+    </span>
+</div>
+<div class="series-record">
+    <span class="series-record-label">FEATURED PLAYER</span>
+    <span class="zzbed2">
+        <strong>
+            <a
+                href="player.html?player=${game.featuredPlayerSlug || game.featuredPlayer?.toLowerCase().replace(/\s+/g, '-')}"
+                style="color: inherit; text-decoration: none;"
+            >${game.featuredPlayer || "—"}</a>
+        </strong>
     </span>
 </div>
         </section>
@@ -554,6 +606,7 @@ const seriesLeaderFirst = homeWins >= awayWins
     } else {
         message.insertAdjacentHTML("beforebegin", scoreboard);
     }
+    
 
     // Only player tables go inside the boxscore area.
     message.innerHTML =

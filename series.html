@@ -1015,10 +1015,20 @@ if (round === "finals") {
     const gamesSection = document.querySelector(".games-section");
 
     // Support the season key in the URL, with a fallback
-    const finals =
-        finalsData?.[season] ??
-        finalsData?.[String(season)] ??
-        Object.values(finalsData || {})[0];
+    
+
+const seasonKeyMap = {
+    "2025-26": "2026",
+    "2024-25": "2025",
+    "2023-24": "2024",
+    "2022-23": "2023",
+    "2021-22": "2022"
+};
+
+const finalsSeason = seasonKeyMap[season] || season;
+
+const finals = finalsData?.[String(finalsSeason)];
+
 
     if (finalsSection && gameGrid && finals) {
         finalsSection.hidden = false;
